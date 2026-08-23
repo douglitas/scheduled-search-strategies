@@ -1,17 +1,15 @@
 # 2026-08-23 — positions (postdocs + jobs)
 
-ALERTA — EL PUSH NO SALIÓ: main **y** la rama de reserva `claude/*` fueron
-rechazadas con HTTP 403, «Claude doesn't have GitHub access to
-douglitas/scheduled-search-strategies for your organization». No es la
-protección de rama, es que la app de GitHub no tiene permiso de escritura en
-este repo: lectura sí (el `fetch` funciona), escritura no, así que tampoco se
-pudo abrir el pull request que manda el contrato. El commit `8c9d7cc` existe
-solo en el contenedor de esta sesión, que es efímero. Hay que darle acceso
-—instalar la app de Claude en el repo desde
-https://github.com/apps/claude/installations/select_target o reconectar GitHub
-en los ajustes de claude.ai— y volver a lanzar la rutina; para no repetir toda
-la investigación se ha enviado el parche del commit por si se prefiere
-aplicarlo a mano (`git am`).
+ALERTA (RESUELTA EL MISMO DÍA) — el push falló en su momento: main **y** la
+rama de reserva `claude/*` fueron rechazadas con HTTP 403, «Claude doesn't
+have GitHub access to douglitas/scheduled-search-strategies for your
+organization». No era la protección de rama: la app de GitHub no tenía permiso
+de escritura en este repo (lectura sí, el `fetch` funcionaba), así que tampoco
+se pudo abrir el pull request que manda el contrato, y la vía de la API de
+GitHub devolvió el mismo 403. La dueña instaló la app al ver el aviso y el
+commit se subió sin cambios. Queda anotado porque explica por qué la página
+estuvo unas horas sin reflejar esta pasada, y porque si el permiso se cae otra
+vez el síntoma será exactamente este.
 
 ALERTA: la búsqueda de texto libre de EURAXESS es inservible para esta rutina.
 Tres parámetros distintos (`keywords=`, `search_api_fulltext=`, `search_text=`)
