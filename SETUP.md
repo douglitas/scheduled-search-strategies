@@ -124,21 +124,107 @@ Configuración de las tres (idéntica salvo nombre, cron y fichero de prompt):
 invierno (CET) las tres se adelantan una hora local; el escalonado de cuatro
 horas se conserva, que es lo que importa.
 
-**Prompt del disparador** — deliberadamente mínimo, porque el prompt de verdad
-vive en el repo (editar `prompts/` cambia la rutina sin tocar el disparador):
+### 5.1 Los textos de los tres disparadores, EXACTOS
 
-> Eres la rutina semanal «research — positions». El repositorio
-> `douglitas/scheduled-search-strategies` ya está clonado en tu directorio de
-> trabajo. Lee el fichero `prompts/out/positions.md` y síguelo al pie de la
-> letra: ese fichero es la única fuente de instrucciones y, si contradice
-> cualquier cosa de este disparador, gana el fichero. No pidas confirmación de
-> nada: nadie está mirando.
+Son los mismos que usan las rutinas de funding de PitAssist (que llevan
+semanas en producción), con el repo y los ficheros cambiados. Copiar cada uno
+TAL CUAL como prompt de su routine — sin añadir nada, sin «mejorarlo»:
 
-(Las otras dos, igual con `fellowships.md` y `ecosystem.md`.)
+**research — positions** (cron `1 22 * * 0`):
+
+```text
+Eres la rutina semanal «research — positions». El repositorio douglitas/scheduled-search-strategies ya está clonado en tu directorio de trabajo. Lee el fichero `prompts/out/positions.md` y síguelo al pie de la letra: ese fichero es la única fuente de instrucciones y, si contradice cualquier cosa de este disparador, gana el fichero. No pidas confirmación de nada: nadie está mirando.
+```
+
+**research — fellowships** (cron `0 2 * * 1`):
+
+```text
+Eres la rutina semanal «research — fellowships». El repositorio douglitas/scheduled-search-strategies ya está clonado en tu directorio de trabajo. Lee el fichero `prompts/out/fellowships.md` y síguelo al pie de la letra: ese fichero es la única fuente de instrucciones y, si contradice cualquier cosa de este disparador, gana el fichero. No pidas confirmación de nada: nadie está mirando.
+```
+
+**research — ecosystem** (cron `0 6 * * 1`):
+
+```text
+Eres la rutina semanal «research — ecosystem». El repositorio douglitas/scheduled-search-strategies ya está clonado en tu directorio de trabajo. Lee el fichero `prompts/out/ecosystem.md` y síguelo al pie de la letra: ese fichero es la única fuente de instrucciones y, si contradice cualquier cosa de este disparador, gana el fichero. No pidas confirmación de nada: nadie está mirando.
+```
+
+### 5.2 Por qué el disparador dice lo que dice (anatomía, frase a frase)
+
+El disparador es deliberadamente mínimo — cuatro frases — porque **el prompt
+de verdad no vive en el disparador, vive en el repo**, en `prompts/out/`.
+Quien monte o toque esto sin contexto previo necesita entender el porqué de
+cada frase antes de cambiar ninguna:
+
+1. *«El repositorio … ya está clonado en tu directorio de trabajo.»*
+   Las Claude Code Routines llegan con el repo ya clonado y empujan mediante
+   la GitHub App de Claude. No hay token que leer ni credencial que montar.
+   La frase existe para que la rutina NO se ponga a buscar credenciales: si
+   alguna vez lo hace, algo está mal configurado (y así lo dice también el
+   paso 0 del prompt del repo).
+
+2. *«Lee el fichero `prompts/out/<rutina>.md` y síguelo al pie de la letra.»*
+   Ese fichero se genera con `python3 prompts/build_prompts.py` concatenando
+   `profile.md` (el perfil de la candidata) + `common-v1.md` (las reglas
+   comunes a las tres rutinas) + `branches-<rutina>.md` (las ramas de
+   búsqueda de esa rutina). Editar cualquiera de esos tres y regenerar cambia
+   el comportamiento de la rutina **sin tocar el disparador**. Ventaja real:
+   los cambios de instrucciones quedan versionados en git, revisables con un
+   diff, y no hay que abrir la web de routines para nada.
+
+3. *«…es la única fuente de instrucciones y, si contradice cualquier cosa de
+   este disparador, gana el fichero.»*
+   Regla de precedencia explícita. En el tracker hermano hubo un fallo real
+   por instrucciones duplicadas que se contradecían entre sí; esta frase
+   garantiza que nunca haya dos fuentes de verdad. Por eso además NO hay que
+   añadir instrucciones al disparador: cualquier cosa que se quiera cambiar
+   se cambia en `prompts/` y se regenera.
+
+4. *«No pidas confirmación de nada: nadie está mirando.»*
+   La rutina corre sola de madrugada. Un agente que se para a preguntar
+   «¿procedo?» se queda esperando para siempre y la pasada muere. Las
+   decisiones dudosas no se preguntan: se toman razonablemente y se declaran
+   en el informe de `runs/`.
+
+Nota sobre el nombre del fichero: cada disparador apunta a UN fichero
+distinto (`positions.md` / `fellowships.md` / `ecosystem.md`). Si los tres
+apuntaran al mismo, las tres rutinas harían el mismo trabajo tres veces y se
+pisarían los TSV. El reparto de propiedad de ficheros entre rutinas está
+dentro de esos prompts y es vinculante.
+
+### 5.3 Mensaje listo para pegar en una sesión de Claude Code de SU cuenta
+
+Para no depender de que el Claude que monte esto tenga contexto ninguno,
+basta pegarle esto (verificando antes la cuenta, §5 arriba):
+
+```text
+Crea tres Claude Code Routines con esta configuración exacta. No cambies
+nada de los textos ni de los crons; las explicaciones están en el SETUP.md
+del repo por si las necesitas.
+
+Comunes a las tres:
+- Fuente: github.com/douglitas/scheduled-search-strategies
+- Modelo: claude-opus-5
+- Herramientas: Bash, Read, Write, Edit, Glob, Grep, WebSearch, WebFetch,
+  Task, TodoWrite
+- Entorno: el por defecto de esta cuenta, con Network access = Full
+- Conectores: los de la cuenta (Gmail incluido) se adjuntan solos
+
+1) nombre «research — positions», cron UTC «1 22 * * 0», prompt: [pegar aquí
+   el bloque de positions de SETUP.md §5.1]
+2) nombre «research — fellowships», cron UTC «0 2 * * 1», prompt: [pegar aquí
+   el bloque de fellowships]
+3) nombre «research — ecosystem», cron UTC «0 6 * * 1», prompt: [pegar aquí
+   el bloque de ecosystem]
+
+Los crons están ya en UTC a propósito (00:01, 04:00 y 08:00 del lunes en
+Madrid en horario de verano): NO los «corrijas» a hora local ni muevas el
+domingo del primero. Al terminar, dame los IDs de las tres y el enlace de
+cada una en claude.ai/code/routines.
+```
 
 Para **modificarlas** después: `/schedule` desde una sesión suya. Para
 **borrarlas**: sólo la web (https://claude.ai/code/routines) — la API sólo
-desactiva.
+desactiva, no borra.
 
 ## 6. Token para los botones de estado de la página
 
