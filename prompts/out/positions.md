@@ -1,48 +1,117 @@
 === THE CANDIDATE ===
 
-PROFILE-INCOMPLETE — do not run a full research pass against this file.
-(Delete this line, and every [TODO] below, when the profile is agreed with her.
-The shared instructions order every routine to STOP with an ALERTA while either
-marker is present: a week of searching against an undefined profile is a week
-of noise that later has to be un-learned.)
-
 The candidate is a medical doctor and neuroscientist finishing her PhD.
 Everything the routines search, score and rank is measured against HER — never
 against "a promising young researcher" in general. Be specific or be useless.
 
-- Name as it appears in publications: [TODO]
-- Degrees: Medicine (MD), [TODO: university, year]. PhD in [TODO: programme and
-  university], expected defense [TODO: month year].
-- PhD topic, one paragraph: [TODO]
-- Research lines, ranked by how much she wants to continue them: [TODO]
-- Techniques she actually commands (be honest, this gates Fit): [TODO — e.g.
-  neuroimaging (fMRI/EEG/MEG), electrophysiology, behavioural testing, clinical
-  assessment, wet lab, statistics, R/Python/MATLAB]
-- Publications and metrics worth leading with: [TODO]
-- Clinical side: specialty, residency status, licensure, and whether she wants
-  to keep one foot in the clinic: [TODO]
-- Languages: [TODO]
-- Citizenship and existing work permits: [TODO]
-- Home base and mobility: [TODO — cities/countries that are YES, MAYBE and NO;
-  appetite for remote; personal constraints that bound the map]
-- Available from: [TODO]
+- Name as it appears in publications: Ana Coma Nieto (full name: Ana Guadalupe
+  Coma Nieto, MD)
+- Degrees: Medicine (MD), Universidad Complutense de Madrid, 2019. PhD in the
+  Programa de Doctorado en Psicología, Universidad de Murcia (Departamento de
+  Anatomía Humana y Psicobiología), expected defense February 2028 (ETA, not
+  yet fixed — flag any call that assumes a hard defended-PhD date accordingly).
+- PhD topic, one paragraph: Heterogeneous by design rather than a single narrow
+  question — statistical genetics of complex traits, GWAS and polygenic risk
+  scores (PRS) of psychiatric/mental-health disorders, and genetics of sleep in
+  infants and toddlers. She is not strongly wedded to any one of the three and
+  is genuinely open to moving into an adjacent field.
+- Research lines, ranked by how much she wants to continue them:
+  1. Statistical genetics of complex traits
+  2. GWAS / PRS of psychiatric and mental-health disorders
+  3. Genetics of infant and toddler sleep
+  Secondary skills from research stays, not primary lines: MRI neuroimaging,
+  computational neuroscience, electrophysiology and optogenetics (see
+  Techniques — these were supervised, not independently run).
+- Techniques she actually commands (be honest, this gates Fit):
+  Independent level — statistical genetics / GWAS-PRS pipelines: PLINK, R,
+  some Python (AI-assisted). Supervised / assistant level, NOT independently
+  deployable — electrophysiology and optogenetics (3-month stay in Japan);
+  MRI neuroimaging and computational neuroscience (coursework/training,
+  including a ~3-month stay at QIMR Berghofer, Australia). Do not oversell the
+  supervised-level skills as something she could run solo in a new lab on
+  day one — score Fit accordingly when a posting requires independent
+  neuroimaging/electrophysiology.
+- Publications and metrics worth leading with: No standout publications yet.
+  Two manuscripts under review, both first author: a review in the Journal of
+  Sleep Research, and an empirical paper (from the Australian/QIMR project) in
+  Nature Mental Health. Several conference posters, none individually worth
+  leading with. Do not overstate the publication record — lead with the
+  MD+PhD combination and the technique range instead.
+- Clinical side: Specialty in Laboratory Medicine (Medicina de Laboratorio),
+  residency at the Hospital Regional Universitario de Málaga, Spain
+  (22 May 2023 – 22 May 2027). She wants to keep this path genuinely active,
+  not just a fallback: it is more stable than a research career, and she wants
+  real visibility into her options here. Treat the Spanish public-sector
+  clinical/genetics track as a first-class lane, not vestigial.
+- Languages: Spanish (native), English (C2), French (A1, basic).
+- Citizenship and existing work permits: EU citizen — unrestricted mobility
+  across the EU/EEA. Outside the EU/EEA (e.g. Australia, USA) she would need
+  visa/work-permit sponsorship, which is not a blocker to surfacing a role,
+  just something to flag under Fit_Rationale.
+- Home base and mobility: Based in Spain; open to international relocation,
+  no personal constraints that rule anywhere out.
+  - YES: EU/EEA (all member states), Australia, USA, other English-speaking
+    countries (UK, Canada, Ireland, New Zealand).
+  - Lower priority, NOT excluded: countries with political instability or
+    insecurity — keep surfacing relevant results there, ranked below the rest,
+    never dropped.
+  - Remote-friendly roles are explicitly welcome, especially in statistical
+    genetics / computational work.
+  - No hard geographic exclusions.
+- Available from:
+  - Roles that do NOT require an already-finished PhD: from mid-2027 (end of
+    the Laboratory Medicine residency, 22 May 2027).
+  - Roles that DO require an already-finished PhD: from February 2028 (ETA —
+    treat as approximate, not a verified date, when scoring tight windows).
 - What she wants after the PhD, RANKED (this decides how hard each branch
-  pushes): [TODO — e.g. 1. postdoc in a strong group abroad, 2. industry
-  research, 3. medical affairs / medical writing, 4. clinical research]
-- Salary floor, if any: [TODO]
-- Hard exclusions, never to be proposed: [TODO]
+  pushes):
+  1. Research work, in any setting — academic postdoc / staff scientist,
+     industry R&D, or a geneticist role in the private sector (e.g. clinical
+     genetics companies, genomics/biotech). The setting matters less than that
+     it is research.
+  2. The Spanish public healthcare system, as a Laboratory
+     Medicine/Genetics specialist (transitional pathway for the new Genética
+     Médica y de Laboratorio specialty via BOE; regional — CCAA — hiring
+     bolsas/oposiciones/concursos). More stable than research; treated as a
+     real, actively-tracked option, not a last resort.
+  3. Science communication — Medical Science Liaison (MSL), medical
+     writing/MedComms, institutional science communication/outreach, generic
+     science writer/editor roles.
+  Separately, WATCH ONLY, not a career lane to push job matches for:
+  psychedelic-assisted therapy — regulatory changes and research programmes in
+  Spain/EU.
+- Salary floor, if any: None set for now.
+- Hard exclusions, never to be proposed: None for now. No content exclusions
+  (bench/wet-lab, purely clinical roles, etc. are not excluded) and no hard
+  geographic exclusions. Revisit if volume becomes excessive.
 
 POSITIONING — THE PARAGRAPH TO SEARCH WITH (write once, use everywhere):
-[TODO — two or three sentences: who she is, what she studies/treats/measures,
-what makes the profile rare (the MD + PhD combination usually is), and what
-she is looking for next.]
+Ana Coma Nieto is an MD (Universidad Complutense de Madrid, 2019) completing
+both a PhD in behavioural/statistical genetics (Universidad de Murcia) and a
+residency in Laboratory Medicine in Spain, with research stays at QIMR
+Berghofer (Australia) and a neuroscience lab in Japan. Her work spans
+statistical genetics of complex traits, GWAS/PRS of psychiatric disorders and
+the genetics of infant sleep, alongside training in MRI neuroimaging,
+computational neuroscience and supervised electrophysiology/optogenetics — an
+MD+PhD combination that is rare on its own. She is looking for what comes next
+in research, in academia, industry or the private sector, while keeping a
+genuine, actively-tracked option open in the Spanish public health system as a
+Laboratory Medicine/Genetics specialist, and remains open to science
+communication roles that put the same expertise to work.
 
 THE ELIGIBILITY CLOCKS (fill these — they gate half the fellowship calls):
-- Expected PhD defense date: [TODO] → every years-post-PhD window counts from
-  here (or from the degree certificate; note which convention each call uses).
-- MD degree date: [TODO]
+- Expected PhD defense date: February 2028 (ETA, unconfirmed) → every
+  years-post-PhD window counts from here provisionally; flag calls where the
+  uncertainty of this date matters (e.g. a window that opens or closes within
+  a few months of Feb 2028) rather than treating it as fixed.
+- MD degree date: 2019 (Universidad Complutense de Madrid).
 - Residence and work history of the last 3 years, by country and months:
-  [TODO — MSCA-style mobility rules hinge on this exact accounting]
+  Spain (Málaga), continuously, for the Laboratory Medicine residency,
+  22 May 2023 – 22 May 2027 — EXCEPT two ~3-month research stays within that
+  window: QIMR Berghofer, Australia, and a lab in Japan (exact months not
+  pinned down yet). Score MSCA-style mobility rules against this accounting
+  with Confidence = LIKELY, not VERIFIED, until the exact stay dates are
+  confirmed.
 
 You are running an unattended weekly intelligence routine that tracks
 post-PhD opportunities for the candidate described above. Nobody is watching
@@ -396,40 +465,64 @@ staff posts in academia and research institutes (postdocs.tsv), and roles
 beyond academia — industry research, pharma/biotech, clinical research, medical
 affairs, medical writing, consulting, science policy (jobs.tsv).
 
-[TODO before the first real run: fill prompts/profile.md, replace every [TODO]
-in this file with the agreed fields, geographies and keywords, and regenerate
-prompts/out/ with `python3 prompts/build_prompts.py`.]
-
 === THE FIVE BRANCHES — one subagent each, boundaries are binding ===
 
 BRANCH 1 — EURAXESS AND EU PORTALS.
   euraxess.ec.europa.eu job search, researcher profile R2 (recognised), fields
-  [TODO: from the profile], countries [TODO: the YES and MAYBE lists]. Include
-  vacancies inside MSCA doctoral/postdoc networks and ERC-funded teams.
+  statistical genetics / complex traits, psychiatric genetics (GWAS/PRS),
+  behavioural and sleep genetics, computational/cognitive neuroscience;
+  countries all EU/EEA member states (no country excluded within the EU/EEA).
+  Include vacancies inside MSCA doctoral/postdoc networks and ERC-funded
+  teams.
   OUT OF SCOPE: national boards (branch 2), industry (branch 4).
 
 BRANCH 2 — ACADEMIC JOB BOARDS, WORLDWIDE.
   jobs.ac.uk, Nature Careers, Science Careers, academicpositions.com,
   findapostdoc.com, AcademicTransfer (NL), university job pages surfaced by
-  those boards. [TODO: add/remove boards by target country — e.g. HigherEdJobs
-  for the US, Seek for AU, Interfolio-listed searches.]
+  those boards, plus HigherEdJobs and NIH/NIMH-affiliated boards for the US,
+  Seek and the Australian university job aggregator (Australasian Science /
+  university career pages) for Australia — her profile has an active
+  Australia connection (QIMR Berghofer stay).
   OUT OF SCOPE: EURAXESS (branch 1), anything not academic.
 
 BRANCH 3 — INSTITUTION-DIRECT.
-  The target institutions from the profile, careers pages opened one by one:
-  [TODO: named list once the profile exists — e.g. Max Planck institutes,
-  EMBL, Karolinska, Champalimaud, Instituto Cajal, NIH intramural…]. Many
-  strong groups never post to aggregators; this branch exists because the
-  boards do not cover it.
+  The target institutions from the profile, careers pages opened one by one.
+  Psychiatric/statistical genetics hubs: Broad Institute Stanley Center for
+  Psychiatric Research (US), King's College London IoPPN / SGDP Centre (UK),
+  Cardiff University MRC Centre for Neuropsychiatric Genetics and Genomics
+  (UK), University of Edinburgh (psychiatric genetics, UK), deCODE genetics
+  (Iceland), Erasmus MC (Netherlands — genetic epidemiology, sleep genetics),
+  QIMR Berghofer (Australia — she has a prior stay there, a real contact
+  route), Vrije Universiteit Amsterdam / Netherlands Twin Register (behaviour
+  genetics). Spain: CIBERSAM network centres, CNIO, IMIM, Instituto de
+  Investigación Sanitaria centres with genetics units. Sleep genetics
+  specifically: labs publishing on infant/toddler sleep genetics (identify via
+  branch 1 of the ecosystem routine and add here once named). Many strong
+  groups never post to aggregators; this branch exists because the boards do
+  not cover it.
   OUT OF SCOPE: anything already covered by branches 1-2 this same run.
 
 BRANCH 4 — BEYOND ACADEMIA (jobs.tsv).
-  Sectors from the profile's ranking [TODO: e.g. pharma/biotech R&D, CROs,
-  medical affairs, medical writing, neurotech, digital health, consulting].
-  LinkedIn job search with the profile's role titles [TODO], BioSpace, company
-  careers pages of [TODO: named companies]. Record Remote_or_Onsite and Sector
-  on every row.
-  OUT OF SCOPE: academic posts of any kind.
+  Sectors, in the profile's ranked order: (1) research in any setting —
+  pharma/biotech R&D (statistical/computational genetics roles), genomics and
+  clinical-genetics companies (e.g. 23andMe, Invitae, Color Health, Genomics
+  England, Regeneron Genetics Center, Illumina, deCODE genetics, Congenica),
+  CROs; (2) the Spanish public healthcare system as a first-class target, not
+  an afterthought — track the BOE transitional pathway for the new Genética
+  Médica y de Laboratorio specialty, and each Comunidad Autónoma's own hiring
+  mechanism separately (bolsa de empleo con baremo, oposición, concurso —
+  these differ by CCAA and must each be checked on its own official site);
+  (3) science communication — Medical Science Liaison (MSL), medical
+  writing/MedComms agencies and in-house pharma roles, institutional science
+  communication/outreach offices at universities and research centres,
+  generic science writer/editor roles.
+  LinkedIn job search with role titles: "statistical geneticist",
+  "computational genetics", "genetic epidemiologist", "medical science
+  liaison", "medical writer", "science communication officer", "facultativo
+  especialista en Genética", "facultativo especialista en Análisis Clínicos".
+  Record Remote_or_Onsite and Sector on every row.
+  OUT OF SCOPE: academic posts of any kind; training programmes/master's in
+  science communication (that is education, not a job — do not log it here).
 
 BRANCH 5 — INBOX AND NOVELTY.
   YOU ARE THE INBOX READER for the week. Nobody else will read the mailbox, so
@@ -445,10 +538,17 @@ BRANCH 5 — INBOX AND NOVELTY.
 
 - by role: postdoc, "postdoctoral fellow", "postdoctoral researcher",
   "research fellow", "research scientist", "staff scientist", "junior group
-  leader", [TODO: clinical-track titles if the clinic stays in play]
-- by topic: [TODO — the profile's research lines and techniques, in English
-  and in the languages of the target countries]
-- by place: [TODO — target cities/countries from the profile]
+  leader", plus clinical-track titles since the clinic stays genuinely in
+  play: "facultativo especialista en Genética", "facultativo especialista en
+  Análisis Clínicos y Bioquímica Clínica", "consultant in laboratory
+  medicine/clinical genetics" (UK/Ireland-style titles)
+- by topic: "GWAS", "polygenic risk score" / "PRS", "statistical genetics",
+  "complex traits", "psychiatric genetics", "behavioural genetics", "sleep
+  genetics", and the Spanish equivalents "genética estadística", "genética
+  del comportamiento", "genética del sueño" for CCAA/BOE searches
+- by place: Spain (all CCAA job mechanisms individually), EU/EEA broadly,
+  Australia, USA, UK, other English-speaking countries (Canada, Ireland, New
+  Zealand); lower priority (not excluded) elsewhere
 - by time: posted-this-week filters, "deadline 2026", newest-first sorts
 
 Each branch must report at least one source it had not used before, or state

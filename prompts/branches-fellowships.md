@@ -8,32 +8,41 @@ grants, thesis and young-investigator prizes. If the money is attached to an
 advertised post someone else opened, it belongs to the positions routine, not
 here.
 
-[TODO before the first real run: fill prompts/profile.md, resolve every [TODO]
-below, and regenerate prompts/out/ with `python3 prompts/build_prompts.py`.]
-
 === THE FIVE BRANCHES — one subagent each, boundaries are binding ===
 
 BRANCH 1 — EU AND INTERNATIONAL FLAGSHIPS.
   MSCA Postdoctoral Fellowships (check the mobility rule against the profile's
-  last-3-years residence accounting before scoring), EMBO Postdoctoral
-  Fellowships (rolling), HFSP, ERC (as a horizon: note when her clock would
-  allow a Starting Grant), [TODO: others by field]. FENS and IBRO programmes
-  for neuroscience.
+  last-3-years residence accounting before scoring — Confidence LIKELY, not
+  VERIFIED, given her Australia/Japan stay dates are approximate), EMBO
+  Postdoctoral Fellowships (rolling), HFSP, ERC (as a horizon: note when her
+  clock would allow a Starting Grant). FENS and IBRO programmes for
+  neuroscience. Field-adjacent flagships: Brain & Behavior Research Foundation
+  (NARSAD) Young Investigator Grant (psychiatric genetics), Behavior Genetics
+  Association early-career awards.
   OUT OF SCOPE: national programmes (branch 2).
 
 BRANCH 2 — NATIONAL AND REGIONAL PROGRAMMES.
-  By target country from the profile [TODO: keep only the countries in play].
-  If Spain: Juan de la Cierva, Ramón y Cajal, and the ISCIII family — Sara
-  Borrell, Miguel Servet, Río Hortega — which is built for MD-PhD profiles;
-  la Caixa Junior Leader. If Germany: Humboldt, DFG Walter Benjamin. If UK:
-  Wellcome Early-Career, MRC fellowships. If US: NIH F32/K99 equivalents where
-  a non-citizen is eligible. [TODO: complete per profile.]
+  Spain (home base, always in scope): Juan de la Cierva, Ramón y Cajal, and
+  the ISCIII family — Sara Borrell, Miguel Servet, Río Hortega — which is
+  built for MD-PhD profiles like hers; la Caixa Junior Leader. Germany:
+  Humboldt, DFG Walter Benjamin. UK: Wellcome Early-Career Awards, MRC
+  fellowships — a strong fit given the UK's psychiatric-genetics hubs
+  (King's College London, Cardiff, Edinburgh). USA: NIH F32/K99-R00
+  equivalents where a non-citizen is eligible, with an eye on NIMH-funded
+  mechanisms given the psychiatric-genetics line. Australia: NHMRC
+  Investigator Grants and postdoctoral fellowships — she has a live contact
+  route via her QIMR Berghofer stay.
   OUT OF SCOPE: EU-level (branch 1).
 
 BRANCH 3 — FOUNDATIONS AND FIELD-SPECIFIC FUNDERS.
-  [TODO by research line: disease foundations relevant to her topic, private
-  neuroscience funders, women-in-science programmes (e.g. L'Oréal-UNESCO For
-  Women in Science), bilateral country funds.]
+  By research line: Brain & Behavior Research Foundation (NARSAD), Stanley
+  Center for Psychiatric Research funding calls, One Mind, psychiatric-genetics
+  consortium-linked funding (Psychiatric Genomics Consortium working groups
+  sometimes carry small grants/fellowships) for GWAS/PRS work; sleep-specific
+  — European Sleep Research Society (ESRS) and Sleep Research Society grants,
+  national sleep foundations. Women-in-science programmes: L'Oréal-UNESCO For
+  Women in Science. Bilateral country funds relevant to Spain-Australia and
+  Spain-Japan mobility if any exist (check each run; do not assume).
   OUT OF SCOPE: anything a branch above already owns.
 
 BRANCH 4 — TRAVEL, SHORT STAYS AND PRIZES.
@@ -55,10 +64,13 @@ BRANCH 5 — REOPENINGS AND THE WATCHLIST.
 
 - by instrument: "postdoctoral fellowship", "mobility grant", "career
   development award", "young investigator", beca posdoctoral, ayudas,
-  convocatoria, [TODO: terms in target-country languages]
+  convocatoria; French minor: "bourse postdoctorale"; also "starting grant",
+  "K99/R00", "Investigator Grant" (AU)
 - by funder: name each agency and foundation directly and look for its newest
   call and its call calendar
-- by field: [TODO — the profile's research lines]
+- by field: statistical genetics / complex traits, GWAS / PRS of psychiatric
+  and mental-health disorders, genetics of infant and toddler sleep,
+  behavioural and cognitive neuroscience
 - by time: "call 2026", "call 2027", deadline calendars, funder newsletters
 
 Each branch must report at least one source it had not used before, or state

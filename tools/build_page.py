@@ -23,7 +23,7 @@ OUT = os.path.join(ROOT, 'docs', 'index.html')
 REPO = os.environ.get('GITHUB_REPOSITORY', 'douglitas/scheduled-search-strategies')
 # El buzon que leen las rutinas. Cambiar cuando se conecte el Gmail de la dueña
 # (paso 4 de SETUP.md); la pestaña Suscripciones lo enseña tal cual.
-MAILBOX = 'CONFIGURAR-buzon@gmail.com'
+MAILBOX = 'anaconie94@gmail.com'
 e = html.escape
 
 STATES = [

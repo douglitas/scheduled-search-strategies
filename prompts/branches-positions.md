@@ -7,40 +7,64 @@ staff posts in academia and research institutes (postdocs.tsv), and roles
 beyond academia — industry research, pharma/biotech, clinical research, medical
 affairs, medical writing, consulting, science policy (jobs.tsv).
 
-[TODO before the first real run: fill prompts/profile.md, replace every [TODO]
-in this file with the agreed fields, geographies and keywords, and regenerate
-prompts/out/ with `python3 prompts/build_prompts.py`.]
-
 === THE FIVE BRANCHES — one subagent each, boundaries are binding ===
 
 BRANCH 1 — EURAXESS AND EU PORTALS.
   euraxess.ec.europa.eu job search, researcher profile R2 (recognised), fields
-  [TODO: from the profile], countries [TODO: the YES and MAYBE lists]. Include
-  vacancies inside MSCA doctoral/postdoc networks and ERC-funded teams.
+  statistical genetics / complex traits, psychiatric genetics (GWAS/PRS),
+  behavioural and sleep genetics, computational/cognitive neuroscience;
+  countries all EU/EEA member states (no country excluded within the EU/EEA).
+  Include vacancies inside MSCA doctoral/postdoc networks and ERC-funded
+  teams.
   OUT OF SCOPE: national boards (branch 2), industry (branch 4).
 
 BRANCH 2 — ACADEMIC JOB BOARDS, WORLDWIDE.
   jobs.ac.uk, Nature Careers, Science Careers, academicpositions.com,
   findapostdoc.com, AcademicTransfer (NL), university job pages surfaced by
-  those boards. [TODO: add/remove boards by target country — e.g. HigherEdJobs
-  for the US, Seek for AU, Interfolio-listed searches.]
+  those boards, plus HigherEdJobs and NIH/NIMH-affiliated boards for the US,
+  Seek and the Australian university job aggregator (Australasian Science /
+  university career pages) for Australia — her profile has an active
+  Australia connection (QIMR Berghofer stay).
   OUT OF SCOPE: EURAXESS (branch 1), anything not academic.
 
 BRANCH 3 — INSTITUTION-DIRECT.
-  The target institutions from the profile, careers pages opened one by one:
-  [TODO: named list once the profile exists — e.g. Max Planck institutes,
-  EMBL, Karolinska, Champalimaud, Instituto Cajal, NIH intramural…]. Many
-  strong groups never post to aggregators; this branch exists because the
-  boards do not cover it.
+  The target institutions from the profile, careers pages opened one by one.
+  Psychiatric/statistical genetics hubs: Broad Institute Stanley Center for
+  Psychiatric Research (US), King's College London IoPPN / SGDP Centre (UK),
+  Cardiff University MRC Centre for Neuropsychiatric Genetics and Genomics
+  (UK), University of Edinburgh (psychiatric genetics, UK), deCODE genetics
+  (Iceland), Erasmus MC (Netherlands — genetic epidemiology, sleep genetics),
+  QIMR Berghofer (Australia — she has a prior stay there, a real contact
+  route), Vrije Universiteit Amsterdam / Netherlands Twin Register (behaviour
+  genetics). Spain: CIBERSAM network centres, CNIO, IMIM, Instituto de
+  Investigación Sanitaria centres with genetics units. Sleep genetics
+  specifically: labs publishing on infant/toddler sleep genetics (identify via
+  branch 1 of the ecosystem routine and add here once named). Many strong
+  groups never post to aggregators; this branch exists because the boards do
+  not cover it.
   OUT OF SCOPE: anything already covered by branches 1-2 this same run.
 
 BRANCH 4 — BEYOND ACADEMIA (jobs.tsv).
-  Sectors from the profile's ranking [TODO: e.g. pharma/biotech R&D, CROs,
-  medical affairs, medical writing, neurotech, digital health, consulting].
-  LinkedIn job search with the profile's role titles [TODO], BioSpace, company
-  careers pages of [TODO: named companies]. Record Remote_or_Onsite and Sector
-  on every row.
-  OUT OF SCOPE: academic posts of any kind.
+  Sectors, in the profile's ranked order: (1) research in any setting —
+  pharma/biotech R&D (statistical/computational genetics roles), genomics and
+  clinical-genetics companies (e.g. 23andMe, Invitae, Color Health, Genomics
+  England, Regeneron Genetics Center, Illumina, deCODE genetics, Congenica),
+  CROs; (2) the Spanish public healthcare system as a first-class target, not
+  an afterthought — track the BOE transitional pathway for the new Genética
+  Médica y de Laboratorio specialty, and each Comunidad Autónoma's own hiring
+  mechanism separately (bolsa de empleo con baremo, oposición, concurso —
+  these differ by CCAA and must each be checked on its own official site);
+  (3) science communication — Medical Science Liaison (MSL), medical
+  writing/MedComms agencies and in-house pharma roles, institutional science
+  communication/outreach offices at universities and research centres,
+  generic science writer/editor roles.
+  LinkedIn job search with role titles: "statistical geneticist",
+  "computational genetics", "genetic epidemiologist", "medical science
+  liaison", "medical writer", "science communication officer", "facultativo
+  especialista en Genética", "facultativo especialista en Análisis Clínicos".
+  Record Remote_or_Onsite and Sector on every row.
+  OUT OF SCOPE: academic posts of any kind; training programmes/master's in
+  science communication (that is education, not a job — do not log it here).
 
 BRANCH 5 — INBOX AND NOVELTY.
   YOU ARE THE INBOX READER for the week. Nobody else will read the mailbox, so
@@ -56,10 +80,17 @@ BRANCH 5 — INBOX AND NOVELTY.
 
 - by role: postdoc, "postdoctoral fellow", "postdoctoral researcher",
   "research fellow", "research scientist", "staff scientist", "junior group
-  leader", [TODO: clinical-track titles if the clinic stays in play]
-- by topic: [TODO — the profile's research lines and techniques, in English
-  and in the languages of the target countries]
-- by place: [TODO — target cities/countries from the profile]
+  leader", plus clinical-track titles since the clinic stays genuinely in
+  play: "facultativo especialista en Genética", "facultativo especialista en
+  Análisis Clínicos y Bioquímica Clínica", "consultant in laboratory
+  medicine/clinical genetics" (UK/Ireland-style titles)
+- by topic: "GWAS", "polygenic risk score" / "PRS", "statistical genetics",
+  "complex traits", "psychiatric genetics", "behavioural genetics", "sleep
+  genetics", and the Spanish equivalents "genética estadística", "genética
+  del comportamiento", "genética del sueño" for CCAA/BOE searches
+- by place: Spain (all CCAA job mechanisms individually), EU/EEA broadly,
+  Australia, USA, UK, other English-speaking countries (Canada, Ireland, New
+  Zealand); lower priority (not excluded) elsewhere
 - by time: posted-this-week filters, "deadline 2026", newest-first sorts
 
 Each branch must report at least one source it had not used before, or state

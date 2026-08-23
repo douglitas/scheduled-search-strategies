@@ -6,18 +6,24 @@ SCOPE — the map around the applications: research groups worth approaching
 (with or without an open posting), the conferences where the field meets, and
 the courses that close a skills gap or put her in the right room.
 
-[TODO before the first real run: fill prompts/profile.md, resolve every [TODO]
-below, and regenerate prompts/out/ with `python3 prompts/build_prompts.py`.]
-
 === THE FOUR BRANCHES — one subagent each, boundaries are binding ===
 
 BRANCH 1 — GROUP DISCOVERY.
-  Find research groups worth approaching in [TODO: fields and geographies from
-  the profile]. Rotate the discovery angle weekly so the same names do not
-  come back: (a) last month's papers in [TODO: journals of the field];
-  (b) speaker and organiser lists of the field's conferences; (c) fresh grant
-  awards — an ERC, Wellcome or national award announced this year is a PI with
-  money to hire; (d) editorial boards and society committees; (e) [TODO].
+  Find research groups worth approaching in statistical genetics of complex
+  traits, psychiatric genetics (GWAS/PRS), infant/toddler sleep genetics, and
+  behavioural/cognitive neuroscience, across EU/EEA, Australia, USA, UK and
+  other English-speaking countries (lower priority elsewhere, never dropped).
+  Rotate the discovery angle weekly so the same names do not come back:
+  (a) last month's papers in Nature Genetics, Nature Human Behaviour,
+  Molecular Psychiatry, Biological Psychiatry, American Journal of Psychiatry,
+  Psychological Medicine, Behavior Genetics, Genes Brain and Behavior, SLEEP,
+  Journal of Sleep Research, Nature Mental Health, Human Molecular Genetics,
+  PLOS Genetics; (b) speaker and organiser lists of the field's conferences
+  (branch 2); (c) fresh grant awards — an ERC, Wellcome or national award
+  announced this year is a PI with money to hire; (d) editorial boards and
+  society committees; (e) Psychiatric Genomics Consortium (PGC) working-group
+  membership lists — a direct map of who is active in GWAS/PRS psychiatric
+  genetics right now.
   For every group record: PI, institution, research lines, techniques, whether
   they are known to be hiring (Openings_Known), funding status with its
   source, and the realistic Contact_Route — a cold email to the PI is normal
@@ -25,19 +31,25 @@ BRANCH 1 — GROUP DISCOVERY.
   OUT OF SCOPE: groups already in the table (branch 4 owns them).
 
 BRANCH 2 — EVENTS.
-  Conferences and congresses in [TODO: field list — e.g. FENS Forum, SfN
-  annual meeting, field-specific Gordon conferences…]: dates, venue, abstract
-  deadline (that is the Deadline column — the clock that matters), early-bird
-  fees, and whether the event carries its own travel grants
-  (Travel_Grant_Available; cross-link the fellowships routine when a separate
-  grant covers it).
+  Conferences and congresses: World Congress of Psychiatric Genetics (WCPG —
+  the central venue for her GWAS/PRS line), American Society of Human
+  Genetics (ASHG) annual meeting, European Society of Human Genetics (ESHG)
+  conference, Behavior Genetics Association annual meeting, FENS Forum, SfN
+  annual meeting, Sleep Research Society and European Sleep Research Society
+  (ESRS) annual meetings (sleep genetics), Biological Psychiatry meeting.
+  Record dates, venue, abstract deadline (that is the Deadline column — the
+  clock that matters), early-bird fees, and whether the event carries its own
+  travel grants (Travel_Grant_Available; cross-link the fellowships routine
+  when a separate grant covers it).
   OUT OF SCOPE: courses (branch 3).
 
 BRANCH 3 — TRAINING.
-  Summer schools, advanced practical courses, workshops and certifications
-  [TODO: e.g. CAJAL programme, EMBO practical courses, CSHL, statistics or
-  methods courses that close a profile gap]: application deadlines, fees,
-  stipends and fee waivers (Funding_Available).
+  Summer schools, advanced practical courses, workshops and certifications:
+  CAJAL programme, EMBO practical courses, CSHL, the International Statistical
+  Genetics workshop ("Boulder Workshop", Colorado — directly on her core
+  technique), PGC analyst training/workshops, PLINK/PRSice/LDpred
+  methods courses, ESRS summer school (sleep). Record application deadlines,
+  fees, stipends and fee waivers (Funding_Available).
   OUT OF SCOPE: degree programmes; anything longer than a few weeks.
 
 BRANCH 4 — GROUPS FOLLOW-UP.
@@ -57,8 +69,11 @@ BRANCH 4 — GROUPS FOLLOW-UP.
 === SEARCH ANGLES TO ROTATE ===
 
 - by people: PI names once known, "lab of X", recent-award announcement pages
-- by topic: [TODO — research lines, techniques, model systems]
-- by place: [TODO — target cities/countries]
+- by topic: statistical genetics, complex traits, GWAS, polygenic risk
+  scores, psychiatric genetics, behavioural genetics, infant/toddler sleep
+  genetics, human GWAS cohorts, PRS methodology
+- by place: Spain, EU/EEA broadly, Australia, USA, UK, other English-speaking
+  countries; lower priority (not excluded) elsewhere
 - by time: "abstract deadline 2026", "applications open", course calendars
 
 Each branch must report at least one source it had not used before, or state
