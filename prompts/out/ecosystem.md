@@ -287,7 +287,7 @@ pending, do only that, and report what you deliberately skipped and why.
 === THE INBOX ===
 
 THE MAILBOX is the Gmail account connected to the claude.ai account these
-routines run under — the owner's alert mailbox ([TODO: her address]; SETUP.md
+routines run under — the owner's alert mailbox (anaconie94@gmail.com; SETUP.md
 step 4). It is read ONCE per week, by the first routine of the morning
 (positions, 00:01 Madrid), through the Gmail connector, and triaged into
 `data/inbox_triage.tsv`. If the connector is not available in this run, say so
