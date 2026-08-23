@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Radar · investigacion</title>
+<style>
+:root{--bg:#f6f8fa;--fg:#1f2328;--mut:#59636e;--line:#d8dee4;--card:#ffffff;--card2:#f6f8fa;--acc:#4f46e5;--accfg:#ffffff;--ok:#1a7f37;--warn:#9a6700;--bad:#cf222e;--shadow:0 1px 3px rgba(31,35,40,.06);--stNEW:#59636e;--stREAD:#0969da;--stIN_PROGRESS:#8250df;--stAPPLIED:#1a7f37;--stRESOLVED:#116329;--stREVISIT:#9a6700;--stDISCARDED:#cf222e;--cpostdocs:#2a78d6;--cjobs:#eb6834;--cfellowships:#1baf7a;--cevents:#eda100;--cgroups:#e87ba4;--ctraining:#008300;--cwatch:#59636e}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1117;--fg:#e6edf3;--mut:#8d96a0;--line:#30363d;--card:#161b22;--card2:#1f2630;--acc:#818cf8;--accfg:#0d1117;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--shadow:none;--stNEW:#8d96a0;--stREAD:#4493f8;--stIN_PROGRESS:#ab7df8;--stAPPLIED:#3fb950;--stRESOLVED:#2ea043;--stREVISIT:#d29922;--stDISCARDED:#f85149;--cpostdocs:#3987e5;--cjobs:#d95926;--cfellowships:#199e70;--cevents:#c98500;--cgroups:#d55181;--ctraining:#008300;--cwatch:#8d96a0}}
+:root[data-theme=dark]{--bg:#0d1117;--fg:#e6edf3;--mut:#8d96a0;--line:#30363d;--card:#161b22;--card2:#1f2630;--acc:#818cf8;--accfg:#0d1117;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--shadow:none;--stNEW:#8d96a0;--stREAD:#4493f8;--stIN_PROGRESS:#ab7df8;--stAPPLIED:#3fb950;--stRESOLVED:#2ea043;--stREVISIT:#d29922;--stDISCARDED:#f85149;--cpostdocs:#3987e5;--cjobs:#d95926;--cfellowships:#199e70;--cevents:#c98500;--cgroups:#d55181;--ctraining:#008300;--cwatch:#8d96a0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);
+ font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+ -webkit-font-smoothing:antialiased}
+.serif{font-family:"Iowan Old Style",Palatino,Georgia,serif}
+#top{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line);
+ padding:10px 16px 0}
+.tline{max-width:960px;margin:0 auto;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h1{font-size:19px;margin:0;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:600}
+h1 i{font-style:normal;color:var(--acc)}
+#upd{color:var(--mut);font-size:12.5px;margin-right:auto}
+#thm{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:999px;
+ width:30px;height:30px;cursor:pointer;font-size:14px;line-height:1}
+#q{flex:1 1 180px;min-width:150px;padding:7px 12px;font-size:14px;border:1px solid var(--line);
+ border-radius:999px;background:var(--card);color:var(--fg);outline:none}
+#q:focus{border-color:var(--acc)}
+#tabs{max-width:960px;margin:6px auto 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+#tabs::-webkit-scrollbar{display:none}
+.tb{border:0;background:none;color:var(--mut);font:inherit;font-size:14px;padding:9px 13px;
+ cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
+.tb i{font-style:normal;font-size:11.5px;color:var(--mut);opacity:.8}
+.tb.on{color:var(--fg);border-bottom-color:var(--acc);font-weight:600}
+.wrap{max-width:960px;margin:0 auto;padding:18px 16px 90px}
+.view{display:none}.view.on{display:block}
+h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);
+ margin:26px 0 10px;font-weight:600}
+.sub{color:var(--mut);font-size:13.5px;margin:6px 0 12px}
+/* resumen */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:14px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+ box-shadow:var(--shadow)}
+.rcard h4{margin:0 0 3px;font-size:14px}
+.rwhen{margin:0;color:var(--mut);font-size:12.5px}
+.ralerta{margin:8px 0 0;font-size:12.5px;color:var(--fg);background:color-mix(in srgb,var(--warn) 11%,var(--card));border-left:3px solid var(--warn);border-radius:0 7px 7px 0;padding:6px 9px;line-height:1.45}.ralerta b{color:var(--warn)}.alertp{color:var(--fg)!important;background:color-mix(in srgb,var(--warn) 11%,var(--card));border-left:3px solid var(--warn);border-radius:0 7px 7px 0;padding:7px 10px!important}.srcadd{display:flex;gap:8px;margin:6px 0 4px;flex-wrap:wrap}.srcadd input{flex:1 1 240px;padding:8px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--fg)}.srcadd button{border:1px solid var(--acc);background:var(--acc);color:var(--accfg);border-radius:9px;padding:8px 16px;cursor:pointer;font-size:14px}#srcpend{font-size:13px;color:var(--mut);margin:2px 0 12px}#srcpend .pu{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin:2px 4px 2px 0}
+.rlink{margin-top:8px;border:1px solid var(--line);background:none;color:var(--acc);
+ font-size:12.5px;padding:3px 10px;border-radius:999px;cursor:pointer}
+.rmut{display:inline-block;margin-top:8px;color:var(--mut);font-size:12.5px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:10px;margin:14px 0 4px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 8px 10px;
+ cursor:pointer;text-align:center;box-shadow:var(--shadow);font:inherit;color:var(--fg)}
+.tile b{display:block;font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;
+ font-family:"Iowan Old Style",Palatino,Georgia,serif}
+.tile span{font-size:11.5px;color:var(--mut);letter-spacing:.03em}
+.tile:hover{border-color:var(--acc)}
+.urow{display:flex;gap:10px;align-items:baseline;background:var(--card);border:1px solid var(--line);
+ border-radius:10px;padding:9px 12px;margin-bottom:6px;cursor:pointer;box-shadow:var(--shadow)}
+.udays{font-variant-numeric:tabular-nums;font-weight:700;font-size:13px;min-width:42px}
+.udays.urg{color:var(--warn)}.udays.crit{color:var(--bad)}
+.unm{flex:1;font-size:14.5px}
+.utag,.ufit{color:var(--mut);font-size:12px;white-space:nowrap}
+.udet{padding:10px 14px;background:var(--card2);border-radius:10px;margin:-2px 0 8px}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px;align-items:center}
+.sep{width:1px;height:18px;background:var(--line);margin:0 3px}
+.chip{padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);
+ color:var(--mut);font-size:13px;cursor:pointer;user-select:none}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--accfg)}
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+ margin-bottom:10px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 7px;font-size:17px;line-height:1.35;font-weight:600}
+.card h3::after{font-size:10.5px;padding:2px 7px;border-radius:999px;margin-left:8px;
+ vertical-align:middle;white-space:nowrap}
+.id{color:var(--mut);font-size:12px;font-weight:400;margin-right:6px;font-variant-numeric:tabular-nums}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.b{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);
+ color:var(--mut);white-space:nowrap}
+.b.new{background:var(--ok);color:var(--card);border-color:var(--ok)}
+.b[data-fitb="5"],.b[data-fitb="4"]{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.b.low{color:var(--ok);border-color:var(--ok)}
+.b.urg{color:var(--warn);border-color:var(--warn)}
+.b.crit{color:var(--bad);border-color:var(--bad);font-weight:600}
+.b.unv{color:var(--warn);border-color:var(--warn)}
+.b.tab{background:var(--card2);font-weight:500}
+.money{margin:0 0 6px;font-size:13.5px;color:var(--mut)}
+.why{margin:0 0 7px;font-size:14.5px}
+.next{margin:0 0 9px;font-size:13.5px}
+.states{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 9px}
+.states button{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);
+ background:none;color:var(--mut);cursor:pointer}
+.states button[data-s="NEW"].on{background:var(--stNEW);border-color:var(--stNEW);color:var(--card)}.card[data-state="NEW"] h3::after{content:"sin ver";background:var(--stNEW);color:var(--card)}[data-state="NEW"] .stlbl{color:var(--stNEW)}.states button[data-s="READ"].on{background:var(--stREAD);border-color:var(--stREAD);color:var(--card)}.card[data-state="READ"] h3::after{content:"leido";background:var(--stREAD);color:var(--card)}[data-state="READ"] .stlbl{color:var(--stREAD)}.states button[data-s="IN_PROGRESS"].on{background:var(--stIN_PROGRESS);border-color:var(--stIN_PROGRESS);color:var(--card)}.card[data-state="IN_PROGRESS"] h3::after{content:"en curso";background:var(--stIN_PROGRESS);color:var(--card)}[data-state="IN_PROGRESS"] .stlbl{color:var(--stIN_PROGRESS)}.states button[data-s="APPLIED"].on{background:var(--stAPPLIED);border-color:var(--stAPPLIED);color:var(--card)}.card[data-state="APPLIED"] h3::after{content:"solicitado";background:var(--stAPPLIED);color:var(--card)}[data-state="APPLIED"] .stlbl{color:var(--stAPPLIED)}.states button[data-s="RESOLVED"].on{background:var(--stRESOLVED);border-color:var(--stRESOLVED);color:var(--card)}.card[data-state="RESOLVED"] h3::after{content:"resuelto";background:var(--stRESOLVED);color:var(--card)}[data-state="RESOLVED"] .stlbl{color:var(--stRESOLVED)}.states button[data-s="REVISIT"].on{background:var(--stREVISIT);border-color:var(--stREVISIT);color:var(--card)}.card[data-state="REVISIT"] h3::after{content:"volver";background:var(--stREVISIT);color:var(--card)}[data-state="REVISIT"] .stlbl{color:var(--stREVISIT)}.states button[data-s="DISCARDED"].on{background:var(--stDISCARDED);border-color:var(--stDISCARDED);color:var(--card)}.card[data-state="DISCARDED"] h3::after{content:"descartado";background:var(--stDISCARDED);color:var(--card)}[data-state="DISCARDED"] .stlbl{color:var(--stDISCARDED)}[data-g="postdocs"],[data-t="postdocs"]{--g:var(--cpostdocs)}[data-g="jobs"],[data-t="jobs"]{--g:var(--cjobs)}[data-g="fellowships"],[data-t="fellowships"]{--g:var(--cfellowships)}[data-g="groups"],[data-t="groups"]{--g:var(--cgroups)}[data-g="events"],[data-t="events"]{--g:var(--cevents)}[data-g="training"],[data-t="training"]{--g:var(--ctraining)}[data-g="watch"],[data-t="watch"]{--g:var(--cwatch)}
+.fitbar{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--mut);margin:0 0 9px;flex-wrap:wrap}
+.fitbar button{width:26px;height:26px;border-radius:999px;border:1px solid var(--line);
+ background:none;color:var(--mut);cursor:pointer;font-size:12px}
+.fitbar button.on{background:var(--acc);border-color:var(--acc);color:var(--accfg)}
+.tools{display:flex;gap:12px;align-items:center;font-size:12.5px}
+.tools a,a{color:var(--acc)}
+button{font:inherit}
+.tools button{font-size:12.5px;background:none;border:1px solid var(--line);color:var(--mut);
+ padding:3px 10px;border-radius:999px;cursor:pointer}
+.detail{display:none;margin-top:10px}
+.card.open .detail{display:block}
+table.full{width:100%;border-collapse:collapse;font-size:13px}
+table.full th{text-align:left;vertical-align:top;color:var(--mut);font-weight:500;
+ padding:4px 10px 4px 0;width:33%;border-top:1px solid var(--line)}
+table.full td{padding:4px 0;border-top:1px solid var(--line);word-break:break-word}
+/* tablas */
+.twrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);
+ box-shadow:var(--shadow)}
+table.otab{width:100%;border-collapse:collapse;font-size:14px}
+table.otab thead th{text-align:left;color:var(--mut);font-weight:600;font-size:11.5px;
+ text-transform:uppercase;letter-spacing:.05em;padding:9px 10px;border-bottom:1px solid var(--line);
+ cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;background:var(--card);z-index:2}
+table.otab thead th[data-dir="a"]::after{content:" ↑";color:var(--acc)}
+table.otab thead th[data-dir="d"]::after{content:" ↓";color:var(--acc)}
+table.otab td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.oprow,tr.grow{cursor:pointer}
+tr.oprow:hover td,tr.grow:hover td{background:var(--card2)}
+tr.oprow td{white-space:nowrap}
+tr.oprow td.nm{white-space:normal;min-width:200px;font-weight:500}
+tr.oprow td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.oprow td.id{color:var(--mut);font-size:11.5px}
+td.dlc.urg{color:var(--warn);font-weight:600}
+td.dlc.crit{color:var(--bad);font-weight:700}
+td.fitc i{font-style:normal;font-size:10px;color:var(--acc);vertical-align:super}
+td.qa{white-space:nowrap}
+td.qa .stlbl{font-size:11.5px;margin-right:6px}
+td.qa button{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);background:none;
+ color:var(--mut);cursor:pointer;font-size:11px;padding:0}
+td.qa button:hover{border-color:var(--acc);color:var(--acc)}
+tr.gdet{display:none}tr.gdet.open{display:table-row}
+tr.gdet td{background:var(--card2);padding:12px 14px;white-space:normal}
+div.gdet{display:none}div.gdet.open{display:block}
+tr.oprow.hide,tr.oprow.hide+tr.gdet,tr.grow.hide,tr.grow.hide+tr.gdet{display:none}
+.empty{color:var(--mut);padding:12px 2px;font-size:14px}
+.hide{display:none!important}
+.tabsec{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--card)}
+.tabsec summary{padding:11px 15px;cursor:pointer;font-weight:600;font-size:14px}
+.tabsec .n{color:var(--mut);font-weight:400;font-size:12.5px}
+.tabsec .twrap{border:0;border-top:1px solid var(--line);border-radius:0}
+/* informe modal */
+#mod{position:fixed;inset:0;background:rgba(20,18,14,.45);display:none;z-index:60}
+#mod.on{display:flex;align-items:flex-start;justify-content:center;padding:4vh 12px}
+#mbox{background:var(--card);border:1px solid var(--line);border-radius:14px;max-width:760px;
+ width:100%;max-height:88vh;overflow-y:auto;padding:20px 24px}
+#mbox h4{font-size:15px;margin:16px 0 6px}#mbox h5{font-size:13.5px;margin:12px 0 4px}
+#mbox p,#mbox li{font-size:13.5px}
+#mbox table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0}
+#mbox th,#mbox td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--line)}
+#mbox code{background:var(--card2);padding:1px 5px;border-radius:5px;font-size:12px}
+#mclose{float:right;border:1px solid var(--line);background:none;color:var(--mut);
+ border-radius:999px;width:28px;height:28px;cursor:pointer}
+#bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
+ padding:7px 14px;font-size:12.5px;color:var(--mut);display:flex;gap:10px;align-items:center;z-index:50}
+#bar button{font-size:12.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line);
+ background:none;color:var(--fg);cursor:pointer}
+footer{margin-top:36px;color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+
+.dot,[data-g] td.nm::before,.chip[data-t]:not([data-t="all"])::before,
+[data-g].card h3 .id::before,[data-g].urow::before{
+ content:"";display:inline-block;width:9px;height:9px;border-radius:50%;
+ background:var(--g,var(--mut));margin-right:7px;vertical-align:baseline;flex:none}
+[data-g] .b.tab{color:var(--g);border-color:color-mix(in srgb,var(--g) 45%,transparent);
+ background:color-mix(in srgb,var(--g) 9%,transparent);font-weight:600}
+.chip[data-t].on{background:color-mix(in srgb,var(--g,var(--acc)) 14%,var(--card));
+ border-color:var(--g,var(--acc));color:var(--fg);font-weight:600}
+.chip[data-t="all"].on{background:var(--acc);border-color:var(--acc);color:var(--accfg)}
+.lgnd{color:var(--mut);font-size:12.5px;margin:4px 0 10px}
+.lgnd b{font-weight:600}.lgnd .cr{color:var(--bad)}.lgnd .cw{color:var(--warn)}
+
+.subi{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);
+ border-radius:12px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+.subi h4{margin:0 0 4px;font-size:15px}
+.scat{color:var(--mut);font-weight:400;font-size:12px;margin-left:4px}
+.sdel{margin:0 0 4px;font-size:13.5px}
+.swhy{margin:0 0 6px;font-size:13px;color:var(--mut)}
+.sgo{font-size:13px}
+.sbody{flex:1;min-width:0}
+.sact{display:flex;flex-direction:column;gap:6px;align-items:flex-end;justify-content:center;min-width:150px}
+.sst{font-size:12px;color:var(--mut)}
+.sbtn{border:1px solid var(--line);background:none;border-radius:999px;padding:4px 12px;
+ font-size:12.5px;color:var(--mut);cursor:pointer;white-space:nowrap}
+.sbtn.ok.on{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.sbtn.no.on{background:var(--mut);border-color:var(--mut);color:var(--card)}
+.subi[data-sub="DONE"]{border-color:color-mix(in srgb,var(--ok) 45%,var(--line))}
+.subi[data-sub="DONE"] .sst{color:var(--ok);font-weight:600}
+.subi[data-sub="SKIP"]{opacity:.55}
+@media(max-width:700px){.subi{flex-direction:column}.sact{flex-direction:row;align-items:center}}
+@media(min-width:1000px){
+ .tline,#tabs,.wrap{max-width:1160px}
+ body{font-size:17px}
+ table.otab{font-size:14.5px}
+ table.otab td{padding:11px 12px}
+ .card h3{font-size:18px}
+ .why{font-size:15px}.money,.next{font-size:14.5px}
+ .tile b{font-size:34px}.tile span{font-size:12.5px}
+ .unm{font-size:15px}.chip{font-size:13.5px}
+ table.full{font-size:13.5px}#q{font-size:15px}
+ .rcard h4{font-size:15px}.rwhen,.ralerta{font-size:13px}
+}
+@media(max-width:700px){.xm{display:none}.tile b{font-size:22px}
+ .unm{font-size:13.5px}.wrap{padding:14px 10px 90px}}
+</style></head><body>
+<div id="top"><div class="tline">
+ <h1>Radar <i>· investigacion</i></h1>
+ <span id="upd" data-iso="">datos del 2026-08-23</span>
+ <input id="q" placeholder="Buscar en todo…">
+ <button id="thm" onclick="themeToggle()" title="tema claro / oscuro">☾</button>
+</div>
+<div id="tabs"><button class="tb on" data-v="resumen" onclick="go('resumen')">Resumen</button><button class="tb" data-v="novedades" onclick="go('novedades')">Novedades <i>0</i></button><button class="tb" data-v="todo" onclick="go('todo')">Todo <i>0</i></button><button class="tb" data-v="vigilando" onclick="go('vigilando')">Vigilando <i>0</i></button><button class="tb" data-v="suscripciones" onclick="go('suscripciones')">Suscripciones <i><span id="subcnt">0</span></i></button><button class="tb" data-v="sistema" onclick="go('sistema')">Sistema</button></div></div>
+<div class="wrap">
+<section class="view on" id="v-resumen">
+<div class="rgrid"><div class="rcard"><h4>Posiciones</h4><p class="rwhen">ultima pasada <span class="rt" data-iso="">nunca</span></p><span class="rmut">sin informe</span></div><div class="rcard"><h4>Fellowships</h4><p class="rwhen">ultima pasada <span class="rt" data-iso="">nunca</span></p><span class="rmut">sin informe</span></div><div class="rcard"><h4>Ecosistema</h4><p class="rwhen">ultima pasada <span class="rt" data-iso="">nunca</span></p><span class="rmut">sin informe</span></div></div>
+<div class="tiles"><button class="tile" id="t-fresh" onclick="go('todo','fresh')"><b>0</b><span>novedades</span></button><button class="tile" id="t-unseen" onclick="go('todo','st:NEW')"><b>…</b><span>sin ver</span></button><button class="tile" id="t-soon" onclick="go('todo','soon')"><b>0</b><span>cierran ≤30 d</span></button><button class="tile" id="t-act" onclick="go('todo','act')"><b>0</b><span>accionables</span></button><button class="tile" id="t-prog" onclick="go('todo','st:IN_PROGRESS')"><b>…</b><span>en curso</span></button><button class="tile" id="t-subs" onclick="go('suscripciones')"><b>0</b><span>por suscribir</span></button></div>
+<h2>Urgente ahora</h2>
+<p class="empty">Nada con reloj corto.</p>
+
+<footer>Rutinas: lunes 00:01 posiciones · 04:00 fellowships · 08:00 ecosistema (Madrid).
+La pagina la genera el CI desde <code>data/*.tsv</code>; tus estados y tu encaje viven en
+<code>owner_status.json</code> y las rutinas no lo tocan · <a href="research.xlsx">descargar Excel</a></footer>
+</section>
+<section class="view" id="v-novedades">
+<p class="sub">Lo tocado por las rutinas en los ultimos siete dias, mejor encaje primero.</p>
+<p class="empty">Sin cambios en los ultimos siete dias.</p></section>
+<section class="view" id="v-todo">
+<div class="chips" id="fchips">
+ <span class="chip on" data-f="all" onclick="chip(this)">todo</span>
+ <span class="chip" data-f="fresh" onclick="chip(this)">novedades</span>
+ <span class="chip" data-f="act" onclick="chip(this)">accionable</span>
+ <span class="chip" data-f="fit4" onclick="chip(this)">fit 4-5</span>
+ <span class="chip" data-f="low" onclick="chip(this)">comp. baja</span>
+ <span class="chip" data-f="soon" onclick="chip(this)">cierra &lt;45 d</span>
+ <span class="sep"></span>
+ <span class="chip" data-f="st:NEW" onclick="chip(this)">sin ver</span><span class="chip" data-f="st:READ" onclick="chip(this)">leido</span><span class="chip" data-f="st:IN_PROGRESS" onclick="chip(this)">en curso</span><span class="chip" data-f="st:APPLIED" onclick="chip(this)">solicitado</span><span class="chip" data-f="st:RESOLVED" onclick="chip(this)">resuelto</span><span class="chip" data-f="st:REVISIT" onclick="chip(this)">volver</span><span class="chip" data-f="st:DISCARDED" onclick="chip(this)">descartado</span>
+</div>
+<div class="chips" id="tchips">
+ <span class="chip on" data-t="all" onclick="tchip(this)">todos los tipos</span>
+ <span class="chip" data-t="postdocs" onclick="tchip(this)">postdocs</span>
+ <span class="chip" data-t="jobs" onclick="tchip(this)">empleo</span>
+ <span class="chip" data-t="fellowships" onclick="tchip(this)">fellowships</span>
+ <span class="chip" data-t="events" onclick="tchip(this)">eventos</span>
+ <span class="chip" data-t="groups" onclick="tchip(this)">grupos</span>
+ <span class="chip" data-t="training" onclick="tchip(this)">formacion</span>
+</div><p class="lgnd">cada color de punto es un tipo (los chips de arriba son la leyenda) · <b class="cr">rojo</b> cierra en ≤14 dias · <b class="cw">ambar</b> en ≤45 · fit con <b>tu</b> = tu encaje personal · los filtros se pueden COMBINAR</p><div class="twrap"><table class="otab" id="optable"><thead><tr><th class="xm" onclick="sortT(this)">ID</th><th class="xm" onclick="sortT(this)">tipo</th><th class="" onclick="sortT(this)">nombre</th><th class="xm" onclick="sortT(this)">EUR</th><th class="" onclick="sortT(this)">fit</th><th class="xm" onclick="sortT(this)">comp.</th><th class="" onclick="sortT(this)" data-dir="a">plazo</th><th class="" onclick="sortT(this)">estado</th></tr></thead><tbody></tbody></table></div><p class="sub" id="nres"></p></section>
+<section class="view" id="v-vigilando"><p class="sub">Cerradas que merecen vigilancia: cuando reabran, la rutina las devolvera a la tabla principal. «volver» es su estado natural.</p><div class="twrap"><table class="otab" id="wtable"><thead><tr><th class="xm" onclick="sortT(this)">ID</th><th class="xm" onclick="sortT(this)">tipo</th><th class="" onclick="sortT(this)">nombre</th><th class="xm" onclick="sortT(this)">EUR</th><th class="" onclick="sortT(this)">fit</th><th class="xm" onclick="sortT(this)">comp.</th><th class="" onclick="sortT(this)" data-dir="a">plazo</th><th class="" onclick="sortT(this)">estado</th></tr></thead><tbody></tbody></table></div></section>
+<section class="view" id="v-suscripciones"><p class="lgnd"><b>Da de alta todo en <code>CONFIGURAR-buzon@gmail.com</code></b> — es el buzon que leen las rutinas. Lo que llegue a otra direccion no lo vera nadie.</p><p class="sub">Servicios de alertas por email: cada alta alimenta el buzon que la rutina del lunes tria. Marca lo que ya hayas hecho — lo marcado no vuelve a aparecer como pendiente en los informes, y las rutinas siguen añadiendo servicios nuevos que encuentren. Tus marcas se guardan con el boton de abajo, como los estados.</p></section>
+<section class="view" id="v-sistema"><h2>Proponer una fuente</h2><p class="sub">Pega una URL y pulsa proponer. La proxima pasada la abrira, comprobara que no este duplicada y la completara en la tabla de fuentes (que ya crece sola: las rutinas añaden lo que descubren). Usa el mismo token de GitHub que los estados.</p><div class="srcadd"><input id="srcurl" type="url" placeholder="https://…  pega aqui la fuente" onkeydown="if(event.key==='Enter')addSrc()"><button onclick="addSrc()">proponer</button></div><div id="srcpend"></div><p class="sub">Para el control fino: <a href="https://github.com/OWNER/research-opportunities/edit/main/data/sources.tsv" target="_blank" rel="noopener">editar sources.tsv en GitHub ↗</a>.</p><h2>La maquinaria</h2><p class="sub">Lo que usan las rutinas. Generado; no editar a mano.</p><details class="tabsec"><summary>sources <span class="n">25</span></summary><div class="twrap"><table class="otab"><thead><tr><th>ID</th><th>Source</th><th>Category</th><th>URL</th><th>What_It_Surfaces</th></tr></thead><tbody><tr class="grow" data-text="src-0001 euraxess postdocs https://euraxess.ec.europa.eu/jobs/search eu-wide researcher job portal (r2 postdoc filter) [todo: afinar query al perfil] weekly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0001</td><td>EURAXESS</td><td>POSTDOCS</td><td><a href="https://euraxess.ec.europa.eu/jobs/search" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>EU-wide researcher job portal (R2 postdoc filter)</td></tr><tr class="gdet"><td colspan="5" data-d="0"></td></tr><tr class="grow" data-text="src-0002 jobs.ac.uk postdocs https://www.jobs.ac.uk uk and international academic vacancies [todo: afinar query al perfil] weekly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0002</td><td>jobs.ac.uk</td><td>POSTDOCS</td><td><a href="https://www.jobs.ac.uk" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>UK and international academic vacancies</td></tr><tr class="gdet"><td colspan="5" data-d="1"></td></tr><tr class="grow" data-text="src-0003 nature careers postdocs https://www.nature.com/naturecareers academic and industry research jobs worldwide [todo: afinar query al perfil] weekly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0003</td><td>Nature Careers</td><td>POSTDOCS</td><td><a href="https://www.nature.com/naturecareers" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Academic and industry research jobs worldwide</td></tr><tr class="gdet"><td colspan="5" data-d="2"></td></tr><tr class="grow" data-text="src-0004 science careers postdocs https://jobs.sciencecareers.org aaas job board, academia and industry [todo: afinar query al perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0004</td><td>Science Careers</td><td>POSTDOCS</td><td><a href="https://jobs.sciencecareers.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>AAAS job board, academia and industry</td></tr><tr class="gdet"><td colspan="5" data-d="3"></td></tr><tr class="grow" data-text="src-0005 academic positions postdocs https://academicpositions.com european academic vacancies by field [todo: afinar query al perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0005</td><td>Academic Positions</td><td>POSTDOCS</td><td><a href="https://academicpositions.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>European academic vacancies by field</td></tr><tr class="gdet"><td colspan="5" data-d="4"></td></tr><tr class="grow" data-text="src-0006 findapostdoc postdocs https://www.findapostdoc.com postdoc listings, mostly uk/eu [todo: afinar query al perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0006</td><td>FindAPostDoc</td><td>POSTDOCS</td><td><a href="https://www.findapostdoc.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Postdoc listings, mostly UK/EU</td></tr><tr class="gdet"><td colspan="5" data-d="5"></td></tr><tr class="grow" data-text="src-0007 academictransfer postdocs https://www.academictransfer.com dutch universities and institutes [todo: afinar query al perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0007</td><td>AcademicTransfer</td><td>POSTDOCS</td><td><a href="https://www.academictransfer.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Dutch universities and institutes</td></tr><tr class="gdet"><td colspan="5" data-d="6"></td></tr><tr class="grow" data-text="src-0008 researchgate jobs postdocs https://www.researchgate.net/jobs academic job listings [todo: afinar query al perfil] weekly low  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0008</td><td>ResearchGate Jobs</td><td>POSTDOCS</td><td><a href="https://www.researchgate.net/jobs" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Academic job listings</td></tr><tr class="gdet"><td colspan="5" data-d="7"></td></tr><tr class="grow" data-text="src-0009 linkedin jobs jobs https://www.linkedin.com/jobs industry, pharma, medical affairs, science roles [todo: titulos de rol segun perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0009</td><td>LinkedIn Jobs</td><td>JOBS</td><td><a href="https://www.linkedin.com/jobs" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Industry, pharma, medical affairs, science roles</td></tr><tr class="gdet"><td colspan="5" data-d="8"></td></tr><tr class="grow" data-text="src-0010 biospace jobs https://www.biospace.com/jobs pharma and biotech industry jobs [todo: afinar query al perfil] weekly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0010</td><td>BioSpace</td><td>JOBS</td><td><a href="https://www.biospace.com/jobs" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Pharma and biotech industry jobs</td></tr><tr class="gdet"><td colspan="5" data-d="9"></td></tr><tr class="grow" data-text="src-0011 msca postdoctoral fellowships fellowships https://marie-sklodowska-curie-actions.ec.europa.eu eu flagship postdoc fellowship, annual call (watch mobility rule) annual call page + open calendar monthly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0011</td><td>MSCA Postdoctoral Fellowships</td><td>FELLOWSHIPS</td><td><a href="https://marie-sklodowska-curie-actions.ec.europa.eu" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>EU flagship postdoc fellowship, annual call (watch mobility rule)</td></tr><tr class="gdet"><td colspan="5" data-d="10"></td></tr><tr class="grow" data-text="src-0012 embo fellowships fellowships https://www.embo.org/funding/fellowships-grants-and-career-support/ postdoctoral fellowships (rolling) and core facility fellowships rolling; check eligibility window monthly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0012</td><td>EMBO Fellowships</td><td>FELLOWSHIPS</td><td><a href="https://www.embo.org/funding/fellowships-grants-and-career-support/" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Postdoctoral fellowships (rolling) and core facility fellowships</td></tr><tr class="gdet"><td colspan="5" data-d="11"></td></tr><tr class="grow" data-text="src-0013 hfsp fellowships fellowships https://www.hfsp.org human frontier science program postdoc fellowships, annual annual call page monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0013</td><td>HFSP Fellowships</td><td>FELLOWSHIPS</td><td><a href="https://www.hfsp.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Human Frontier Science Program postdoc fellowships, annual</td></tr><tr class="gdet"><td colspan="5" data-d="12"></td></tr><tr class="grow" data-text="src-0014 la caixa doctorado/posdoctorado fellowships https://fundacionlacaixa.org junior leader postdoc fellowships (spain/portugal hosts) [todo: mantener solo si españa/portugal entra en juego] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0014</td><td>la Caixa doctorado/posdoctorado</td><td>FELLOWSHIPS</td><td><a href="https://fundacionlacaixa.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Junior Leader postdoc fellowships (Spain/Portugal hosts)</td></tr><tr class="gdet"><td colspan="5" data-d="13"></td></tr><tr class="grow" data-text="src-0015 isciii convocatorias fellowships https://www.isciii.es sara borrell, miguel servet, rio hortega: contratos de investigacion en salud pensados para md-phd [todo: mantener solo si españa entra en juego] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0015</td><td>ISCIII convocatorias</td><td>FELLOWSHIPS</td><td><a href="https://www.isciii.es" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Sara Borrell, Miguel Servet, Rio Hortega: contratos de investigacion en salud pensados para MD-PhD</td></tr><tr class="gdet"><td colspan="5" data-d="14"></td></tr><tr class="grow" data-text="src-0016 aei convocatorias rrhh fellowships https://www.aei.gob.es juan de la cierva, ramon y cajal (españa) [todo: mantener solo si españa entra en juego] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0016</td><td>AEI convocatorias RRHH</td><td>FELLOWSHIPS</td><td><a href="https://www.aei.gob.es" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Juan de la Cierva, Ramon y Cajal (España)</td></tr><tr class="gdet"><td colspan="5" data-d="15"></td></tr><tr class="grow" data-text="src-0017 humboldt foundation fellowships https://www.humboldt-foundation.de incoming fellowships to germany (rolling) [todo: mantener solo si alemania entra en juego] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0017</td><td>Humboldt Foundation</td><td>FELLOWSHIPS</td><td><a href="https://www.humboldt-foundation.de" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Incoming fellowships to Germany (rolling)</td></tr><tr class="gdet"><td colspan="5" data-d="16"></td></tr><tr class="grow" data-text="src-0018 wellcome early-career awards fellowships https://wellcome.org/grant-funding early-career awards, uk-hosted (health-related research) [todo: mantener solo si uk entra en juego] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0018</td><td>Wellcome Early-Career Awards</td><td>FELLOWSHIPS</td><td><a href="https://wellcome.org/grant-funding" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Early-career awards, UK-hosted (health-related research)</td></tr><tr class="gdet"><td colspan="5" data-d="17"></td></tr><tr class="grow" data-text="src-0019 fens groups https://www.fens.org european neuroscience: job board, training, grants, fens forum jobs + training + kavli network weekly high  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0019</td><td>FENS</td><td>GROUPS</td><td><a href="https://www.fens.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>European neuroscience: job board, training, grants, FENS Forum</td></tr><tr class="gdet"><td colspan="5" data-d="18"></td></tr><tr class="grow" data-text="src-0020 ibro events https://ibro.org global neuroscience grants, schools and events [todo: afinar query al perfil] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0020</td><td>IBRO</td><td>EVENTS</td><td><a href="https://ibro.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Global neuroscience grants, schools and events</td></tr><tr class="gdet"><td colspan="5" data-d="19"></td></tr><tr class="grow" data-text="src-0021 sfn events https://www.sfn.org society for neuroscience: annual meeting (abstract windows) and neurojobs meeting dates + neurojobs monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0021</td><td>SfN</td><td>EVENTS</td><td><a href="https://www.sfn.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Society for Neuroscience: annual meeting (abstract windows) and NeuroJobs</td></tr><tr class="gdet"><td colspan="5" data-d="20"></td></tr><tr class="grow" data-text="src-0022 cajal training programme training https://cajal-training.org advanced hands-on neuroscience courses (bordeaux/lisbon) open calls monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0022</td><td>CAJAL training programme</td><td>TRAINING</td><td><a href="https://cajal-training.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Advanced hands-on neuroscience courses (Bordeaux/Lisbon)</td></tr><tr class="gdet"><td colspan="5" data-d="21"></td></tr><tr class="grow" data-text="src-0023 embo courses &amp; workshops training https://www.embo.org/events practical courses and workshops in life sciences [todo: afinar query al perfil] monthly low  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0023</td><td>EMBO Courses &amp; Workshops</td><td>TRAINING</td><td><a href="https://www.embo.org/events" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Practical courses and workshops in life sciences</td></tr><tr class="gdet"><td colspan="5" data-d="22"></td></tr><tr class="grow" data-text="src-0024 cshl meetings &amp; courses training https://meetings.cshl.edu cold spring harbor courses and meetings [todo: afinar query al perfil] monthly low  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0024</td><td>CSHL Meetings &amp; Courses</td><td>TRAINING</td><td><a href="https://meetings.cshl.edu" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Cold Spring Harbor courses and meetings</td></tr><tr class="gdet"><td colspan="5" data-d="23"></td></tr><tr class="grow" data-text="src-0025 erc funded projects groups https://erc.europa.eu fresh erc awards = pis with money to hire; project lists by panel [todo: paneles ls segun perfil] monthly medium  semilla 2026-08-23; revisar cuando el perfil este definido" onclick="openrow(this)"><td>SRC-0025</td><td>ERC funded projects</td><td>GROUPS</td><td><a href="https://erc.europa.eu" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir ↗</a></td><td>Fresh ERC awards = PIs with money to hire; project lists by panel</td></tr><tr class="gdet"><td colspan="5" data-d="24"></td></tr></tbody></table></div></details><details class="tabsec"><summary>readme <span class="n">32</span></summary><div class="twrap"><table class="otab"><thead><tr><th>Radar de investigacion — rastreador semanal de oportunidades post-doctorado</th><th></th></tr></thead><tbody><tr class="grow" data-text="single source of truth. estructura creada 2026-08-23, clonada del tracker de funding de pitassist. el perfil de la candidata aun no esta definido: ver prompts/profile.md antes de la primera pasada real. " onclick="openrow(this)"><td>Single source of truth. Estructura creada 2026-08-23, clonada del tracker de funding de PitAssist. EL PERFIL DE LA CANDIDATA AUN NO ESTA DEFINIDO: ver prompts/p</td><td></td></tr><tr class="gdet"><td colspan="2" data-d="25"></td></tr><tr class="grow" data-text="canonical state the git repository. one tsv per tab under data/, no dates in filenames: git history is the version history. docs/ (web page and research.xlsx) is a rendering generated by ci, never edited by hand." onclick="openrow(this)"><td>CANONICAL STATE</td><td>The git repository. One TSV per tab under data/, NO dates in filenames: git history is the version history. docs/ (web page and research.xlsx) is a RENDERING ge</td></tr><tr class="gdet"><td colspan="2" data-d="26"></td></tr><tr class="grow" data-text="how it is maintained " onclick="openrow(this)"><td>HOW IT IS MAINTAINED</td><td></td></tr><tr class="gdet"><td colspan="2" data-d="27"></td></tr><tr class="grow" data-text="positions routine (mon 00:01 madrid) advertised positions: postdocs and research staff in academia (postdocs), plus roles beyond academia - industry, pharma, clinical research, medical affairs, science communication (jobs). owns postdocs, jobs. reads the gmail inbox for the week." onclick="openrow(this)"><td>positions routine (Mon 00:01 Madrid)</td><td>Advertised positions: postdocs and research staff in academia (postdocs), plus roles beyond academia - industry, pharma, clinical research, medical affairs, sci</td></tr><tr class="gdet"><td colspan="2" data-d="28"></td></tr><tr class="grow" data-text="fellowships routine (mon 04:00 madrid) funded fellowships, mobility and travel grants, prizes; plus the watchlist of closed calls expected to reopen. owns fellowships, watchlist_closed." onclick="openrow(this)"><td>fellowships routine (Mon 04:00 Madrid)</td><td>Funded fellowships, mobility and travel grants, prizes; plus the watchlist of closed calls expected to reopen. OWNS fellowships, watchlist_closed.</td></tr><tr class="gdet"><td colspan="2" data-d="29"></td></tr><tr class="grow" data-text="ecosystem routine (mon 08:00 madrid) research groups worth approaching, conferences and congresses, courses and summer schools. owns groups, events, training. backstop of inbox_triage and source_inbox." onclick="openrow(this)"><td>ecosystem routine (Mon 08:00 Madrid)</td><td>Research groups worth approaching, conferences and congresses, courses and summer schools. OWNS groups, events, training. Backstop of inbox_triage and source_in</td></tr><tr class="gdet"><td colspan="2" data-d="30"></td></tr><tr class="grow" data-text="shared, append-only changelog, sources, inbox_triage, subscriptions. append your lines; never rewrite another routine&#x27;s." onclick="openrow(this)"><td>Shared, append-only</td><td>changelog, sources, inbox_triage, subscriptions. Append your lines; never rewrite another routine&#x27;s.</td></tr><tr class="gdet"><td colspan="2" data-d="31"></td></tr><tr class="grow" data-text="every run also rebuilds only its own rows in action_now, appends to changelog, updates last_checked in sources, and writes runs/&lt;date&gt;-&lt;routine&gt;.md. there is no email: the page is the only deliverable." onclick="openrow(this)"><td>Every run also</td><td>Rebuilds ONLY its own rows in action_now, appends to changelog, updates Last_Checked in sources, and writes runs/&lt;date&gt;-&lt;routine&gt;.md. There is NO email: the pag</td></tr><tr class="gdet"><td colspan="2" data-d="32"></td></tr><tr class="grow" data-text="how to use it " onclick="openrow(this)"><td>HOW TO USE IT</td><td></td></tr><tr class="gdet"><td colspan="2" data-d="33"></td></tr><tr class="grow" data-text="start here action_now - everything scoring 4-5 that closes within 90 days, ranked. if you read one tab, read that one." onclick="openrow(this)"><td>Start here</td><td>action_now - everything scoring 4-5 that closes within 90 days, ranked. If you read one tab, read that one.</td></tr><tr class="gdet"><td colspan="2" data-d="34"></td></tr><tr class="grow" data-text="your columns owner_status and next_action are the owner&#x27;s. the routines never overwrite them. set owner_status to discarded and a row stops being resurfaced." onclick="openrow(this)"><td>Your columns</td><td>Owner_Status and Next_Action are the owner&#x27;s. The routines never overwrite them. Set Owner_Status to DISCARDED and a row stops being resurfaced.</td></tr><tr class="gdet"><td colspan="2" data-d="35"></td></tr><tr class="grow" data-text="fit_1_5 measured against her profile (prompts/profile.md), never against a generic researcher. 5 = apply, squarely her. 4 = strong fit, worth the work. 3 = plausible but needs reframing or a condition solved. 1-2 = logged so it is never rediscovered. fit is never discounted for competition." onclick="openrow(this)"><td>Fit_1_5</td><td>Measured against HER profile (prompts/profile.md), never against a generic researcher. 5 = apply, squarely her. 4 = strong fit, worth the work. 3 = plausible bu</td></tr><tr class="gdet"><td colspan="2" data-d="36"></td></tr><tr class="grow" data-text="competition_level low / medium / high / unknown, with competition_basis giving the reasoning. a fit 3 with low competition often beats a fit 5 with high." onclick="openrow(this)"><td>Competition_Level</td><td>LOW / MEDIUM / HIGH / UNKNOWN, with Competition_Basis giving the reasoning. A Fit 3 with LOW competition often beats a Fit 5 with HIGH.</td></tr><tr class="gdet"><td colspan="2" data-d="37"></td></tr><tr class="grow" data-text="confidence verified = the routine opened the official page and read the dates itself. likely = two or more secondary sources agree. unverified = a lead, not a fact." onclick="openrow(this)"><td>Confidence</td><td>VERIFIED = the routine opened the official page and read the dates itself. LIKELY = two or more secondary sources agree. UNVERIFIED = a lead, not a fact.</td></tr><tr class="gdet"><td colspan="2" data-d="38"></td></tr><tr class="grow" data-text="change_flag new / updated / unchanged / closed. filter on new and updated to see the week&#x27;s movement." onclick="openrow(this)"><td>Change_Flag</td><td>NEW / UPDATED / UNCHANGED / CLOSED. Filter on NEW and UPDATED to see the week&#x27;s movement.</td></tr><tr class="gdet"><td colspan="2" data-d="39"></td></tr><tr class="grow" data-text="days_left deadline - today, recomputed by the generators. negative = passed." onclick="openrow(this)"><td>Days_Left</td><td>Deadline - today, recomputed by the generators. Negative = passed.</td></tr><tr class="gdet"><td colspan="2" data-d="40"></td></tr><tr class="grow" data-text="eligibility clocks many fellowship calls carry a years-since-phd window (years_postphd_window) and mobility rules about where she lived recently. a call she ages out of is closed for her even if open for the world: record it and say so in fit_rationale." onclick="openrow(this)"><td>Eligibility clocks</td><td>Many fellowship calls carry a years-since-PhD window (Years_PostPhD_Window) and mobility rules about where she lived recently. A call she ages out of is CLOSED </td></tr><tr class="gdet"><td colspan="2" data-d="41"></td></tr><tr class="grow" data-text="tabs " onclick="openrow(this)"><td>TABS</td><td></td></tr><tr class="gdet"><td colspan="2" data-d="42"></td></tr><tr class="grow" data-text="action_now ranked shortlist, regenerated every run. partial rebuild: each routine replaces its own rows and preserves the others (tools/rebuild_action_now.py)." onclick="openrow(this)"><td>action_now</td><td>Ranked shortlist, regenerated every run. Partial rebuild: each routine replaces its own rows and preserves the others (tools/rebuild_action_now.py).</td></tr><tr class="gdet"><td colspan="2" data-d="43"></td></tr><tr class="grow" data-text="postdocs advertised postdoc and research staff positions in academia. p-#### ids." onclick="openrow(this)"><td>postdocs</td><td>Advertised postdoc and research staff positions in academia. P-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="44"></td></tr><tr class="grow" data-text="jobs positions beyond academia: industry, pharma/biotech, clinical research, medical affairs, consulting, science communication. j-#### ids." onclick="openrow(this)"><td>jobs</td><td>Positions beyond academia: industry, pharma/biotech, clinical research, medical affairs, consulting, science communication. J-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="45"></td></tr><tr class="grow" data-text="fellowships funded fellowships, mobility/travel grants and prizes the candidate applies to herself and carries to a host. f-#### ids." onclick="openrow(this)"><td>fellowships</td><td>Funded fellowships, mobility/travel grants and prizes the candidate applies to herself and carries to a host. F-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="46"></td></tr><tr class="grow" data-text="groups research groups and labs worth approaching, with or without an open posting. l-#### ids." onclick="openrow(this)"><td>groups</td><td>Research groups and labs worth approaching, with or without an open posting. L-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="47"></td></tr><tr class="grow" data-text="events conferences and congresses: visibility, networking, abstract deadlines (the deadline column is the next relevant one). e-#### ids." onclick="openrow(this)"><td>events</td><td>Conferences and congresses: visibility, networking, abstract deadlines (the Deadline column is the next relevant one). E-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="48"></td></tr><tr class="grow" data-text="training courses, summer schools, workshops, certifications. t-#### ids." onclick="openrow(this)"><td>training</td><td>Courses, summer schools, workshops, certifications. T-#### ids.</td></tr><tr class="gdet"><td colspan="2" data-d="49"></td></tr><tr class="grow" data-text="watchlist_closed closed calls expected to reopen (annual fellowships above all). checked every run; rows keep their original id." onclick="openrow(this)"><td>watchlist_closed</td><td>Closed calls expected to reopen (annual fellowships above all). Checked every run; rows keep their original id.</td></tr><tr class="gdet"><td colspan="2" data-d="50"></td></tr><tr class="grow" data-text="inbox_triage one row per relevant mailbox message, routed positions / fellowships / ecosystem / unclear / ignore. no row may end the week pending." onclick="openrow(this)"><td>inbox_triage</td><td>One row per relevant mailbox message, routed POSITIONS / FELLOWSHIPS / ECOSYSTEM / UNCLEAR / IGNORE. No row may end the week PENDING.</td></tr><tr class="gdet"><td colspan="2" data-d="51"></td></tr><tr class="grow" data-text="subscriptions alert services and newsletters worth subscribing to. status todo / done / skip. the routine never subscribes on her behalf." onclick="openrow(this)"><td>subscriptions</td><td>Alert services and newsletters worth subscribing to. Status TODO / DONE / SKIP. The routine never subscribes on her behalf.</td></tr><tr class="gdet"><td colspan="2" data-d="52"></td></tr><tr class="grow" data-text="changelog append-only audit trail of every change, by run." onclick="openrow(this)"><td>changelog</td><td>Append-only audit trail of every change, by run.</td></tr><tr class="gdet"><td colspan="2" data-d="53"></td></tr><tr class="grow" data-text="sources the monitoring surface: where each routine looks, with the exact filters and query strings. edit this to widen or narrow coverage. seeded 2026-08-23 with generic research sources; queries marked [todo] until the profile is agreed." onclick="openrow(this)"><td>sources</td><td>The monitoring surface: where each routine looks, with the exact filters and query strings. EDIT THIS to widen or narrow coverage. Seeded 2026-08-23 with generi</td></tr><tr class="gdet"><td colspan="2" data-d="54"></td></tr><tr class="grow" data-text="deduplication key normalised(name) + institution-or-funder + deadline year, plus url host+path. a returning annual call keeps its original id; only deadline, status, last_verified and change_flag are updated." onclick="openrow(this)"><td>DEDUPLICATION KEY</td><td>normalised(Name) + Institution-or-Funder + deadline year, plus URL host+path. A returning annual call keeps its original ID; only Deadline, Status, Last_Verifie</td></tr><tr class="gdet"><td colspan="2" data-d="55"></td></tr><tr class="grow" data-text="split rule if any single tsv passes ~60 kb, a human splits it (by geography or sub-type, never by deadline year) updating both generators in the same commit." onclick="openrow(this)"><td>SPLIT RULE</td><td>If any single TSV passes ~60 KB, a human splits it (by geography or sub-type, never by deadline year) updating both generators in the same commit.</td></tr><tr class="gdet"><td colspan="2" data-d="56"></td></tr></tbody></table></div></details></section>
+</div>
+<div id="mod" onclick="closerun(event)"><div id="mbox">
+ <button id="mclose" onclick="closerun(event)">✕</button>
+ <h3 id="mtitle" class="serif"></h3><div id="mbody"></div></div></div>
+<script id="dstore" type="application/json">{"0":[["ID","SRC-0001"],["Source","EURAXESS"],["Category","POSTDOCS"],["URL","https://euraxess.ec.europa.eu/jobs/search"],["What_It_Surfaces","EU-wide researcher job portal (R2 postdoc filter)"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"1":[["ID","SRC-0002"],["Source","jobs.ac.uk"],["Category","POSTDOCS"],["URL","https://www.jobs.ac.uk"],["What_It_Surfaces","UK and international academic vacancies"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"2":[["ID","SRC-0003"],["Source","Nature Careers"],["Category","POSTDOCS"],["URL","https://www.nature.com/naturecareers"],["What_It_Surfaces","Academic and industry research jobs worldwide"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"3":[["ID","SRC-0004"],["Source","Science Careers"],["Category","POSTDOCS"],["URL","https://jobs.sciencecareers.org"],["What_It_Surfaces","AAAS job board, academia and industry"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"4":[["ID","SRC-0005"],["Source","Academic Positions"],["Category","POSTDOCS"],["URL","https://academicpositions.com"],["What_It_Surfaces","European academic vacancies by field"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"5":[["ID","SRC-0006"],["Source","FindAPostDoc"],["Category","POSTDOCS"],["URL","https://www.findapostdoc.com"],["What_It_Surfaces","Postdoc listings, mostly UK/EU"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"6":[["ID","SRC-0007"],["Source","AcademicTransfer"],["Category","POSTDOCS"],["URL","https://www.academictransfer.com"],["What_It_Surfaces","Dutch universities and institutes"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"7":[["ID","SRC-0008"],["Source","ResearchGate Jobs"],["Category","POSTDOCS"],["URL","https://www.researchgate.net/jobs"],["What_It_Surfaces","Academic job listings"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","LOW"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"8":[["ID","SRC-0009"],["Source","LinkedIn Jobs"],["Category","JOBS"],["URL","https://www.linkedin.com/jobs"],["What_It_Surfaces","Industry, pharma, medical affairs, science roles"],["Query_or_Filter","[TODO: titulos de rol segun perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"9":[["ID","SRC-0010"],["Source","BioSpace"],["Category","JOBS"],["URL","https://www.biospace.com/jobs"],["What_It_Surfaces","Pharma and biotech industry jobs"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","weekly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"10":[["ID","SRC-0011"],["Source","MSCA Postdoctoral Fellowships"],["Category","FELLOWSHIPS"],["URL","https://marie-sklodowska-curie-actions.ec.europa.eu"],["What_It_Surfaces","EU flagship postdoc fellowship, annual call (watch mobility rule)"],["Query_or_Filter","annual call page + open calendar"],["Cadence","monthly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"11":[["ID","SRC-0012"],["Source","EMBO Fellowships"],["Category","FELLOWSHIPS"],["URL","https://www.embo.org/funding/fellowships-grants-and-career-support/"],["What_It_Surfaces","Postdoctoral fellowships (rolling) and core facility fellowships"],["Query_or_Filter","rolling; check eligibility window"],["Cadence","monthly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"12":[["ID","SRC-0013"],["Source","HFSP Fellowships"],["Category","FELLOWSHIPS"],["URL","https://www.hfsp.org"],["What_It_Surfaces","Human Frontier Science Program postdoc fellowships, annual"],["Query_or_Filter","annual call page"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"13":[["ID","SRC-0014"],["Source","la Caixa doctorado/posdoctorado"],["Category","FELLOWSHIPS"],["URL","https://fundacionlacaixa.org"],["What_It_Surfaces","Junior Leader postdoc fellowships (Spain/Portugal hosts)"],["Query_or_Filter","[TODO: mantener solo si España/Portugal entra en juego]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"14":[["ID","SRC-0015"],["Source","ISCIII convocatorias"],["Category","FELLOWSHIPS"],["URL","https://www.isciii.es"],["What_It_Surfaces","Sara Borrell, Miguel Servet, Rio Hortega: contratos de investigacion en salud pensados para MD-PhD"],["Query_or_Filter","[TODO: mantener solo si España entra en juego]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"15":[["ID","SRC-0016"],["Source","AEI convocatorias RRHH"],["Category","FELLOWSHIPS"],["URL","https://www.aei.gob.es"],["What_It_Surfaces","Juan de la Cierva, Ramon y Cajal (España)"],["Query_or_Filter","[TODO: mantener solo si España entra en juego]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"16":[["ID","SRC-0017"],["Source","Humboldt Foundation"],["Category","FELLOWSHIPS"],["URL","https://www.humboldt-foundation.de"],["What_It_Surfaces","Incoming fellowships to Germany (rolling)"],["Query_or_Filter","[TODO: mantener solo si Alemania entra en juego]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"17":[["ID","SRC-0018"],["Source","Wellcome Early-Career Awards"],["Category","FELLOWSHIPS"],["URL","https://wellcome.org/grant-funding"],["What_It_Surfaces","Early-career awards, UK-hosted (health-related research)"],["Query_or_Filter","[TODO: mantener solo si UK entra en juego]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"18":[["ID","SRC-0019"],["Source","FENS"],["Category","GROUPS"],["URL","https://www.fens.org"],["What_It_Surfaces","European neuroscience: job board, training, grants, FENS Forum"],["Query_or_Filter","jobs + training + kavli network"],["Cadence","weekly"],["Priority","HIGH"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"19":[["ID","SRC-0020"],["Source","IBRO"],["Category","EVENTS"],["URL","https://ibro.org"],["What_It_Surfaces","Global neuroscience grants, schools and events"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"20":[["ID","SRC-0021"],["Source","SfN"],["Category","EVENTS"],["URL","https://www.sfn.org"],["What_It_Surfaces","Society for Neuroscience: annual meeting (abstract windows) and NeuroJobs"],["Query_or_Filter","meeting dates + neurojobs"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"21":[["ID","SRC-0022"],["Source","CAJAL training programme"],["Category","TRAINING"],["URL","https://cajal-training.org"],["What_It_Surfaces","Advanced hands-on neuroscience courses (Bordeaux/Lisbon)"],["Query_or_Filter","open calls"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"22":[["ID","SRC-0023"],["Source","EMBO Courses & Workshops"],["Category","TRAINING"],["URL","https://www.embo.org/events"],["What_It_Surfaces","Practical courses and workshops in life sciences"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","monthly"],["Priority","LOW"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"23":[["ID","SRC-0024"],["Source","CSHL Meetings & Courses"],["Category","TRAINING"],["URL","https://meetings.cshl.edu"],["What_It_Surfaces","Cold Spring Harbor courses and meetings"],["Query_or_Filter","[TODO: afinar query al perfil]"],["Cadence","monthly"],["Priority","LOW"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"24":[["ID","SRC-0025"],["Source","ERC funded projects"],["Category","GROUPS"],["URL","https://erc.europa.eu"],["What_It_Surfaces","Fresh ERC awards = PIs with money to hire; project lists by panel"],["Query_or_Filter","[TODO: paneles LS segun perfil]"],["Cadence","monthly"],["Priority","MEDIUM"],["Notes","semilla 2026-08-23; revisar cuando el perfil este definido"]],"25":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Single source of truth. Estructura creada 2026-08-23, clonada del tracker de funding de PitAssist. EL PERFIL DE LA CANDIDATA AUN NO ESTA DEFINIDO: ver prompts/profile.md antes de la primera pasada real."]],"26":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","CANONICAL STATE"],["","The git repository. One TSV per tab under data/, NO dates in filenames: git history is the version history. docs/ (web page and research.xlsx) is a RENDERING generated by CI, never edited by hand."]],"27":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","HOW IT IS MAINTAINED"]],"28":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","positions routine (Mon 00:01 Madrid)"],["","Advertised positions: postdocs and research staff in academia (postdocs), plus roles beyond academia - industry, pharma, clinical research, medical affairs, science communication (jobs). OWNS postdocs, jobs. Reads the Gmail inbox for the week."]],"29":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","fellowships routine (Mon 04:00 Madrid)"],["","Funded fellowships, mobility and travel grants, prizes; plus the watchlist of closed calls expected to reopen. OWNS fellowships, watchlist_closed."]],"30":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","ecosystem routine (Mon 08:00 Madrid)"],["","Research groups worth approaching, conferences and congresses, courses and summer schools. OWNS groups, events, training. Backstop of inbox_triage and source_inbox."]],"31":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Shared, append-only"],["","changelog, sources, inbox_triage, subscriptions. Append your lines; never rewrite another routine's."]],"32":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Every run also"],["","Rebuilds ONLY its own rows in action_now, appends to changelog, updates Last_Checked in sources, and writes runs/<date>-<routine>.md. There is NO email: the page is the only deliverable."]],"33":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","HOW TO USE IT"]],"34":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Start here"],["","action_now - everything scoring 4-5 that closes within 90 days, ranked. If you read one tab, read that one."]],"35":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Your columns"],["","Owner_Status and Next_Action are the owner's. The routines never overwrite them. Set Owner_Status to DISCARDED and a row stops being resurfaced."]],"36":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Fit_1_5"],["","Measured against HER profile (prompts/profile.md), never against a generic researcher. 5 = apply, squarely her. 4 = strong fit, worth the work. 3 = plausible but needs reframing or a condition solved. 1-2 = logged so it is never rediscovered. Fit is NEVER discounted for competition."]],"37":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Competition_Level"],["","LOW / MEDIUM / HIGH / UNKNOWN, with Competition_Basis giving the reasoning. A Fit 3 with LOW competition often beats a Fit 5 with HIGH."]],"38":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Confidence"],["","VERIFIED = the routine opened the official page and read the dates itself. LIKELY = two or more secondary sources agree. UNVERIFIED = a lead, not a fact."]],"39":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Change_Flag"],["","NEW / UPDATED / UNCHANGED / CLOSED. Filter on NEW and UPDATED to see the week's movement."]],"40":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Days_Left"],["","Deadline - today, recomputed by the generators. Negative = passed."]],"41":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","Eligibility clocks"],["","Many fellowship calls carry a years-since-PhD window (Years_PostPhD_Window) and mobility rules about where she lived recently. A call she ages out of is CLOSED for her even if open for the world: record it and say so in Fit_Rationale."]],"42":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","TABS"]],"43":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","action_now"],["","Ranked shortlist, regenerated every run. Partial rebuild: each routine replaces its own rows and preserves the others (tools/rebuild_action_now.py)."]],"44":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","postdocs"],["","Advertised postdoc and research staff positions in academia. P-#### ids."]],"45":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","jobs"],["","Positions beyond academia: industry, pharma/biotech, clinical research, medical affairs, consulting, science communication. J-#### ids."]],"46":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","fellowships"],["","Funded fellowships, mobility/travel grants and prizes the candidate applies to herself and carries to a host. F-#### ids."]],"47":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","groups"],["","Research groups and labs worth approaching, with or without an open posting. L-#### ids."]],"48":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","events"],["","Conferences and congresses: visibility, networking, abstract deadlines (the Deadline column is the next relevant one). E-#### ids."]],"49":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","training"],["","Courses, summer schools, workshops, certifications. T-#### ids."]],"50":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","watchlist_closed"],["","Closed calls expected to reopen (annual fellowships above all). Checked every run; rows keep their original id."]],"51":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","inbox_triage"],["","One row per relevant mailbox message, routed POSITIONS / FELLOWSHIPS / ECOSYSTEM / UNCLEAR / IGNORE. No row may end the week PENDING."]],"52":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","subscriptions"],["","Alert services and newsletters worth subscribing to. Status TODO / DONE / SKIP. The routine never subscribes on her behalf."]],"53":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","changelog"],["","Append-only audit trail of every change, by run."]],"54":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","sources"],["","The monitoring surface: where each routine looks, with the exact filters and query strings. EDIT THIS to widen or narrow coverage. Seeded 2026-08-23 with generic research sources; queries marked [TODO] until the profile is agreed."]],"55":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","DEDUPLICATION KEY"],["","normalised(Name) + Institution-or-Funder + deadline year, plus URL host+path. A returning annual call keeps its original ID; only Deadline, Status, Last_Verified and Change_Flag are updated."]],"56":[["Radar de investigacion — rastreador semanal de oportunidades post-doctorado","SPLIT RULE"],["","If any single TSV passes ~60 KB, a human splits it (by geography or sub-type, never by deadline year) updating both generators in the same commit."]]}</script>
+<script id="runstore" type="application/json">{"positions":{"name":"Posiciones","date":null,"html":""},"fellowships":{"name":"Fellowships","date":null,"html":""},"ecosystem":{"name":"Ecosistema","date":null,"html":""}}</script>
+<script id="srcstore" type="application/json">["https://academicpositions.com","https://cajal-training.org","https://erc.europa.eu","https://euraxess.ec.europa.eu/jobs/search","https://fundacionlacaixa.org","https://ibro.org","https://jobs.sciencecareers.org","https://marie-sklodowska-curie-actions.ec.europa.eu","https://meetings.cshl.edu","https://wellcome.org/grant-funding","https://www.academictransfer.com","https://www.aei.gob.es","https://www.biospace.com/jobs","https://www.embo.org/events","https://www.embo.org/funding/fellowships-grants-and-career-support","https://www.fens.org","https://www.findapostdoc.com","https://www.hfsp.org","https://www.humboldt-foundation.de","https://www.isciii.es","https://www.jobs.ac.uk","https://www.linkedin.com/jobs","https://www.nature.com/naturecareers","https://www.researchgate.net/jobs","https://www.sfn.org"]</script>
+<div id="bar"><span id="msg">estado: local</span>
+ <button onclick="setToken()">conectar con GitHub</button>
+ <button onclick="sync()">guardar</button></div>
+<script>
+const REPO="OWNER/research-opportunities", FILE="data/owner_status.json";
+let STATE={}, SHA=null, DIRTY=false, V="resumen";
+/* filtros multiples y combinables: FS facetas (Y entre si), SS estados (O entre
+   si), TS tipos (O entre si). Vacio = sin restriccion. */
+let FS=new Set(), SS=new Set(), TS=new Set();
+const SLBL={NEW:"sin ver",READ:"leido",IN_PROGRESS:"en curso",APPLIED:"solicitado",
+ RESOLVED:"resuelto",REVISIT:"volver",DISCARDED:"descartado"};
+const DET=JSON.parse(document.getElementById("dstore").textContent);
+const RUNS=JSON.parse(document.getElementById("runstore").textContent);
+const tok=()=>localStorage.getItem("gh_token")||"";
+
+/* ---- tema ---- */
+function applyTheme(t){document.documentElement.dataset.theme=t||"";
+ document.getElementById("thm").textContent=
+  (t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))?"☀":"☾";}
+function themeToggle(){
+ const cur=document.documentElement.dataset.theme||
+  (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+ const nx=cur==="dark"?"light":"dark";
+ localStorage.setItem("theme",nx);applyTheme(nx);}
+applyTheme(localStorage.getItem("theme")||"");
+
+/* ---- fechas relativas ---- */
+function rel(iso){if(!iso)return "nunca";const d=(Date.now()-new Date(iso))/36e5;
+ if(d<1)return "hace menos de 1 h";if(d<48)return "hace "+Math.round(d)+" h";
+ return "hace "+Math.round(d/24)+" dias";}
+document.querySelectorAll("[data-iso]").forEach(s=>{if(s.dataset.iso)s.textContent=rel(s.dataset.iso)});
+const UP=document.getElementById("upd");if(UP.dataset.iso)UP.textContent="datos de "+rel(UP.dataset.iso);
+
+/* ---- pestañas ---- */
+function go(v,preset){
+ V=v;
+ document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id==="v-"+v));
+ document.querySelectorAll(".tb").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+ if(preset!==undefined&&v==="todo"){
+  FS.clear();SS.clear();TS.clear();
+  if(preset&&preset!=="all"){
+   if(preset.startsWith("st:"))SS.add(preset.slice(3));else FS.add(preset);
+  }
+  syncChips();filt();
+ }
+ window.scrollTo({top:0});
+}
+/* ---- detalle bajo demanda ---- */
+function fitbar(id){
+ const w=document.createElement("div");w.className="fitbar";
+ const lab=document.createElement("span");lab.textContent="tu encaje:";w.appendChild(lab);
+ for(let n=1;n<=5;n++){const b=document.createElement("button");b.textContent=n;
+  b.onclick=ev=>{ev.stopPropagation();setFit(id,n)};b.dataset.n=n;w.appendChild(b)}
+ const q=document.createElement("button");q.textContent="×";q.title="quitar tu encaje";
+ q.onclick=ev=>{ev.stopPropagation();setFit(id,null)};w.appendChild(q);
+ const r=document.createElement("span");r.className="rref";w.appendChild(r);
+ return w;
+}
+function dfill(el){
+ if(!el||el.firstChild||!el.dataset.d)return;
+ const id=el.dataset.id;
+ if(id){
+  if(!el.closest(".card")){
+   const sb=document.createElement("div");sb.className="states";sb.dataset.id=id;
+   for(const k in SLBL){const b=document.createElement("button");b.className="sb";
+    b.dataset.s=k;b.textContent=SLBL[k];
+    b.onclick=ev=>setState(id,k,ev);sb.appendChild(b)}
+   el.appendChild(sb);
+  }
+  el.appendChild(fitbar(id));
+ }
+ const t=document.createElement("table");t.className="full";
+ for(const [k,v] of (DET[el.dataset.d]||[])){
+  const tr=t.insertRow(), th=document.createElement("th"), td=tr.insertCell();
+  th.textContent=k; tr.insertBefore(th,td);
+  if(/^https?:\/\//.test(v)){const a=document.createElement("a");
+   a.href=v;a.target="_blank";a.rel="noopener";a.textContent=v.length>60?"abrir ↗":v;
+   a.onclick=ev=>ev.stopPropagation();td.appendChild(a);}
+  else td.textContent=v;
+ }
+ el.appendChild(t);
+ if(id)paint();
+}
+function opencard(b){const c=b.closest(".card");dfill(c.querySelector(".detail"));c.classList.toggle("open")}
+function openrow(tr){const d=tr.nextElementSibling;
+ dfill(d.tagName==="TR"?d.querySelector("td"):d);d.classList.toggle("open")}
+
+/* ---- orden ---- */
+function sortT(th){
+ const t=th.closest("table"),tb=t.tBodies[0];
+ const i=[...th.parentNode.children].indexOf(th);
+ const dir=th.dataset.dir==="a"?"d":"a";
+ t.querySelectorAll("th").forEach(h=>{delete h.dataset.dir});
+ th.dataset.dir=dir;
+ const rows=[...tb.rows],pairs=[];
+ for(let j=0;j<rows.length;j+=2)pairs.push([rows[j],rows[j+1]]);
+ const key=p=>{const c=p[0].cells[i];const s=c.dataset.s!==undefined?c.dataset.s:c.textContent.trim();
+  const n=parseFloat(s);return isNaN(n)?String(s).toLowerCase():n};
+ pairs.sort((a,b)=>{const x=key(a),y=key(b);
+  const c=(typeof x==="number"&&typeof y==="number")?x-y:String(x).localeCompare(String(y));
+  return dir==="a"?c:-c});
+ pairs.forEach(p=>{tb.appendChild(p[0]);tb.appendChild(p[1])});
+}
+
+/* ---- estado del founder ---- */
+function eff(id,base){const o=STATE[id]||{};return o.f||+base||0}
+function setState(id,s,ev){
+ if(ev)ev.stopPropagation();
+ const o=STATE[id]||{};
+ if(o.s===s){delete o.s}else{o.s=s}
+ o.t=new Date().toISOString();
+ if(!o.s&&!o.f){delete STATE[id]}else{STATE[id]=o}
+ DIRTY=true;paint();msg("cambiado");if(tok())sync();
+}
+function quick(id,s,ev){setState(id,s,ev)}
+function subMark(id,v,ev){
+ /* Tu marca SIEMPRE gana sobre la columna del TSV, incluido devolver a
+    pendiente: ocho filas venian marcadas DONE por la rutina y sin esto no
+    habia forma de decir «yo no estoy suscrito a eso». */
+ if(ev)ev.stopPropagation();
+ const el=document.querySelector('.subi[data-id="'+id+'"]');
+ const cur=el?el.dataset.sub:"TODO";
+ const o=STATE[id]||{};
+ o.s=(cur===v)?"TODO":v;
+ o.t=new Date().toISOString();
+ STATE[id]=o;
+ DIRTY=true;paint();msg("cambiado");if(tok())sync();
+}
+function setFit(id,n){
+ const o=STATE[id]||{};
+ if(n===null||o.f===n){delete o.f}else{o.f=n}
+ o.t=new Date().toISOString();
+ if(!o.s&&!o.f){delete STATE[id]}else{STATE[id]=o}
+ DIRTY=true;paint();msg("cambiado");if(tok())sync();
+}
+function paint(){
+ document.querySelectorAll(".card").forEach(c=>{
+  const id=c.dataset.id,o=STATE[id]||{};
+  c.dataset.state=o.s||"NEW";
+  c.querySelectorAll(".states button").forEach(b=>b.classList.toggle("on",b.dataset.s===(o.s||"NEW")));
+  const fb=c.querySelector('.b[data-fitb]');
+  if(fb){const ef=eff(id,c.dataset.fit);
+   fb.textContent="fit "+ef+(o.f?" ·tuyo":"");fb.dataset.fitb=ef}
+ });
+ document.querySelectorAll("tr.oprow").forEach(r=>{
+  const id=r.dataset.id,o=STATE[id]||{};
+  r.dataset.state=o.s||"NEW";
+  const l=r.querySelector(".stlbl");if(l)l.textContent=SLBL[o.s||"NEW"];
+  const fc=r.querySelector(".fitc");
+  if(fc){const ef=eff(id,r.dataset.fit);fc.dataset.s=ef;
+   fc.innerHTML=ef+(o.f?"<i>tú</i>":"")}
+ });
+ document.querySelectorAll(".urow").forEach(u=>{
+  const o=STATE[u.dataset.id]||{};u.dataset.state=o.s||"NEW"});
+ document.querySelectorAll(".fitbar").forEach(w=>{
+  const id=w.parentElement.dataset.id,o=STATE[id]||{};
+  w.querySelectorAll("button[data-n]").forEach(b=>b.classList.toggle("on",o.f===+b.dataset.n));
+ });
+ document.querySelectorAll(".subi").forEach(d=>{
+  const o=STATE[d.dataset.id]||{};
+  const s=o.s||d.dataset.tsv||"TODO";
+  d.dataset.sub=s;
+  d.querySelector(".sbtn.ok").classList.toggle("on",s==="DONE");
+  d.querySelector(".sbtn.no").classList.toggle("on",s==="SKIP");
+  d.querySelector(".sst").textContent=s==="DONE"?"suscrito":(s==="SKIP"?"descartada":"pendiente");
+ });
+ const sp=document.querySelectorAll('.subi:not([data-sub="DONE"]):not([data-sub="SKIP"])').length;
+ const sc=document.getElementById("subcnt"),st2=document.querySelector("#t-subs b");
+ if(sc)sc.textContent=sp;if(st2)st2.textContent=sp;
+ let unseen=0,prog=0;
+ document.querySelectorAll("#optable tr.oprow").forEach(r=>{
+  const s=(STATE[r.dataset.id]||{}).s||"NEW";
+  if(s==="NEW")unseen++;if(s==="IN_PROGRESS")prog++;
+ });
+ const tu=document.querySelector("#t-unseen b"),tp=document.querySelector("#t-prog b");
+ if(tu)tu.textContent=unseen;if(tp)tp.textContent=prog;
+ filt();
+}
+
+/* ---- filtros ---- */
+function syncChips(){
+ document.querySelectorAll("#tchips .chip").forEach(c=>
+  c.classList.toggle("on",c.dataset.t==="all"?TS.size===0:TS.has(c.dataset.t)));
+ document.querySelectorAll("#fchips .chip").forEach(c=>{
+  const f=c.dataset.f;
+  c.classList.toggle("on",f==="all"?(FS.size===0&&SS.size===0):
+   (f.startsWith("st:")?SS.has(f.slice(3)):FS.has(f)));
+ });
+}
+function tchip(el){
+ const t=el.dataset.t;
+ if(t==="all"){TS.clear()}else{TS.has(t)?TS.delete(t):TS.add(t)}
+ syncChips();filt();
+}
+function chip(el){
+ const f=el.dataset.f;
+ if(f==="all"){FS.clear();SS.clear()}
+ else if(f.startsWith("st:")){const s=f.slice(3);SS.has(s)?SS.delete(s):SS.add(s)}
+ else{FS.has(f)?FS.delete(f):FS.add(f)}
+ syncChips();filt();
+}
+function tmatch(tab){
+ if(TS.size===0)return true;
+ for(const t of TS){if(tab===t)return true}
+ return false;
+}
+function pass(d,q){
+ const id=d.dataset.id,s=d.dataset.state||"NEW";
+ if(q&&!d.dataset.text.includes(q))return false;
+ if(FS.has("fresh")&&d.dataset.fresh!=="1")return false;
+ if(FS.has("act")&&d.dataset.act!=="1")return false;
+ if(FS.has("fit4")&&eff(id,d.dataset.fit)<4)return false;
+ if(FS.has("low")&&d.dataset.comp!=="LOW")return false;
+ if(FS.has("soon")){const c=d.querySelector("td.dlc");
+  const v=c?+c.dataset.s:+(d.dataset.dl||99999);if(!(v>=0&&v<=45))return false}
+ if(SS.size&&!SS.has(s))return false;
+ if(SS.size===0&&s==="DISCARDED")return false;
+ return true;
+}
+function filt(){
+ const q=document.getElementById("q").value.toLowerCase().trim();
+ document.querySelectorAll("#v-novedades .card").forEach(c=>{
+  c.classList.toggle("hide",!( (!q||c.dataset.text.includes(q)) ));
+ });
+ document.querySelectorAll("#optable tr.oprow").forEach(r=>{
+  const ok=pass(r,q)&&tmatch(r.dataset.tab||"");
+  r.classList.toggle("hide",!ok);
+  if(!ok)r.nextElementSibling.classList.remove("open");
+ });
+ document.querySelectorAll("#wtable tr.oprow").forEach(r=>{
+  const ok=(!q||r.dataset.text.includes(q));
+  r.classList.toggle("hide",!ok);
+  if(!ok)r.nextElementSibling.classList.remove("open");
+ });
+ document.querySelectorAll(".subi").forEach(d=>{
+  d.classList.toggle("hide",!!q&&!d.dataset.text.includes(q));
+ });
+ document.querySelectorAll("#v-sistema tr.grow").forEach(t=>{
+  const ok=!q||t.dataset.text.includes(q);
+  t.classList.toggle("hide",!ok);
+  if(!ok)t.nextElementSibling.classList.remove("open");
+ });
+ const n=document.querySelectorAll("#optable tr.oprow:not(.hide)").length;
+ const res=document.getElementById("nres");
+ if(res)res.textContent=n+" oportunidades en pantalla";
+}
+let qt;document.getElementById("q").addEventListener("input",()=>{
+ clearTimeout(qt);qt=setTimeout(()=>{
+  if(V==="resumen"&&document.getElementById("q").value.trim())go("todo");
+  filt();
+ },140);
+});
+
+/* ---- informes ---- */
+function openrun(slug){
+ const r=RUNS[slug];if(!r||!r.html)return;
+ document.getElementById("mtitle").textContent=r.name+" — "+(r.date||"");
+ document.getElementById("mbody").innerHTML=r.html;
+ document.getElementById("mod").classList.add("on");
+}
+function closerun(ev){if(!ev||ev.target.id==="mod"||ev.target.id==="mclose")
+ document.getElementById("mod").classList.remove("on")}
+document.addEventListener("keydown",ev=>{if(ev.key==="Escape")closerun()});
+
+/* ---- sincronizacion con GitHub ---- */
+function setToken(){const t=prompt("Pega un token de GitHub con permiso de escritura en "+REPO+
+ ".\nSe guarda solo en este navegador.");if(t){localStorage.setItem("gh_token",t.trim());load();}}
+function msg(t){document.getElementById("msg").textContent="estado: "+t+(DIRTY?" · sin guardar":"")}
+async function load(){
+ try{const h={Accept:"application/vnd.github+json"};if(tok())h.Authorization="Bearer "+tok();
+  const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{headers:h});
+  if(r.ok){const j=await r.json();SHA=j.sha;
+   STATE=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))));msg("cargado")}
+  else if(r.status===404){STATE={};msg("sin estado previo")}
+  else msg("no se pudo leer ("+r.status+")");
+ }catch(e){msg("sin conexion, local")}
+ paint();
+}
+async function sync(){
+ if(!tok()){msg("conecta GitHub para guardar");return}
+ const body=btoa(unescape(encodeURIComponent(JSON.stringify(STATE,null,1))));
+ const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{
+  method:"PUT",headers:{Authorization:"Bearer "+tok(),Accept:"application/vnd.github+json"},
+  body:JSON.stringify({message:"estado: actualizado desde la pagina",content:body,sha:SHA||undefined})});
+ if(r.ok){const j=await r.json();SHA=j.content.sha;DIRTY=false;msg("guardado")}
+ else msg("error al guardar ("+r.status+")");
+}
+
+/* ---- buzon de fuentes ---- */
+const SRCFILE="data/source_inbox.json";
+const KNOWN=new Set(JSON.parse(document.getElementById("srcstore").textContent));
+let SRCJ=[],SRCSHA=null;
+function renderSrc(){
+ const el=document.getElementById("srcpend");if(!el)return;
+ const p=SRCJ.filter(x=>x.status==="PENDING");
+ el.innerHTML=p.length?("en cola para la proxima pasada: "+
+  p.map(x=>'<span class="pu">'+x.url.replace(/^https?:\/\/(www\.)?/,"").slice(0,42)+"</span>").join("")):"";
+}
+async function loadSrc(){
+ try{const h={Accept:"application/vnd.github+json"};if(tok())h.Authorization="Bearer "+tok();
+  const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${SRCFILE}`,{headers:h});
+  if(r.ok){const j=await r.json();SRCSHA=j.sha;
+   SRCJ=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))))||[];}
+  else if(r.status===404){SRCJ=[];SRCSHA=null}
+ }catch(e){}
+ renderSrc();
+}
+async function addSrc(){
+ const inp=document.getElementById("srcurl"),u=inp.value.trim().replace(/\/$/,"");
+ if(!/^https?:\/\//.test(u)){msg("pega una URL completa (https://…)");return}
+ if(!tok()){msg("conecta GitHub para proponer fuentes");setToken();return}
+ if(KNOWN.has(u.toLowerCase())){msg("esa fuente ya esta en sources");inp.value="";return}
+ await loadSrc();
+ if(SRCJ.some(x=>(x.url||"").replace(/\/$/,"").toLowerCase()===u.toLowerCase())){
+  msg("ya estaba propuesta");inp.value="";return}
+ SRCJ.push({url:u,added:new Date().toISOString().slice(0,10),status:"PENDING"});
+ const body=btoa(unescape(encodeURIComponent(JSON.stringify(SRCJ,null,1))));
+ const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${SRCFILE}`,{
+  method:"PUT",headers:{Authorization:"Bearer "+tok(),Accept:"application/vnd.github+json"},
+  body:JSON.stringify({message:"fuente propuesta desde la pagina",content:body,sha:SRCSHA||undefined})});
+ if(r.ok){const j=await r.json();SRCSHA=j.content.sha;inp.value="";
+  msg("fuente en cola: la proxima pasada la completara");renderSrc()}
+ else msg("no se pudo proponer ("+r.status+")");
+}
+load();loadSrc();
+</script></body></html>

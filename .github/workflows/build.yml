@@ -1,0 +1,66 @@
+name: build
+on:
+  push:
+    paths: ['data/**', 'tools/**', 'prompts/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # Historia completa, no dos commits: build_page.py calcula las novedades
+        # sobre una ventana de siete dias. Con un clon superficial esa ventana se
+        # encoge al ultimo commit y la pagina solo enseña lo de la ultima rutina
+        # que empujo, escondiendo el trabajo de las otras dos.
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install openpyxl
+      - name: Prompts regenerados y sin desincronizar
+        # Las rutinas leen prompts/out/, no los ficheros fuente. Editar el comun
+        # (o el perfil) y olvidar regenerar deja instrucciones fantasma que nadie
+        # ejecuta. Si esto falla: ejecutar python3 prompts/build_prompts.py y
+        # commitear el resultado.
+        run: |
+          python3 prompts/build_prompts.py
+          git diff --exit-code prompts/out
+      - name: Página y Excel
+        run: |
+          python3 tools/build_page.py
+          python3 tools/build_xlsx.py
+      - name: Commit si algo cambió
+        # Rebase antes de empujar, y reintentar. Aqui empujan tres rutinas, la
+        # dueña desde la pagina y quien este trabajando en el repo; un push a
+        # secas se pierde en cuanto alguien se cuela en medio.
+        run: |
+          git config user.name  "research-ci"
+          git config user.email "ci@research.local"
+          git add docs
+          if git diff --cached --quiet; then echo "sin cambios"; exit 0; fi
+          git commit -m "ci: regenera página y Excel"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "empuje rechazado, reintento $i"; sleep 7
+          done
+          echo "::error::cinco reintentos y el push sigue rechazado"; exit 1
+      - uses: actions/upload-pages-artifact@v3
+        with: {path: docs}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4

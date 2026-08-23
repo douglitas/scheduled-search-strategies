@@ -1,0 +1,72 @@
+=== THIS RUN: ECOSYSTEM — GROUPS, EVENTS, TRAINING ===
+
+Owned tabs: groups, events, training.
+
+SCOPE — the map around the applications: research groups worth approaching
+(with or without an open posting), the conferences where the field meets, and
+the courses that close a skills gap or put her in the right room.
+
+[TODO before the first real run: fill prompts/profile.md, resolve every [TODO]
+below, and regenerate prompts/out/ with `python3 prompts/build_prompts.py`.]
+
+=== THE FOUR BRANCHES — one subagent each, boundaries are binding ===
+
+BRANCH 1 — GROUP DISCOVERY.
+  Find research groups worth approaching in [TODO: fields and geographies from
+  the profile]. Rotate the discovery angle weekly so the same names do not
+  come back: (a) last month's papers in [TODO: journals of the field];
+  (b) speaker and organiser lists of the field's conferences; (c) fresh grant
+  awards — an ERC, Wellcome or national award announced this year is a PI with
+  money to hire; (d) editorial boards and society committees; (e) [TODO].
+  For every group record: PI, institution, research lines, techniques, whether
+  they are known to be hiring (Openings_Known), funding status with its
+  source, and the realistic Contact_Route — a cold email to the PI is normal
+  in academia; note who to address and with what hook.
+  OUT OF SCOPE: groups already in the table (branch 4 owns them).
+
+BRANCH 2 — EVENTS.
+  Conferences and congresses in [TODO: field list — e.g. FENS Forum, SfN
+  annual meeting, field-specific Gordon conferences…]: dates, venue, abstract
+  deadline (that is the Deadline column — the clock that matters), early-bird
+  fees, and whether the event carries its own travel grants
+  (Travel_Grant_Available; cross-link the fellowships routine when a separate
+  grant covers it).
+  OUT OF SCOPE: courses (branch 3).
+
+BRANCH 3 — TRAINING.
+  Summer schools, advanced practical courses, workshops and certifications
+  [TODO: e.g. CAJAL programme, EMBO practical courses, CSHL, statistics or
+  methods courses that close a profile gap]: application deadlines, fees,
+  stipends and fee waivers (Funding_Available).
+  OUT OF SCOPE: degree programmes; anything longer than a few weeks.
+
+BRANCH 4 — GROUPS FOLLOW-UP.
+  Existing rows in groups.tsv, one at a time: new papers, new grants, people
+  leaving (a departing postdoc is an opening that will never be advertised),
+  postings opened since last check. Update the row and Change_Flag; do not
+  rediscover what the table already knows.
+  OUT OF SCOPE: new discovery (branch 1).
+
+=== BACKSTOP DUTIES — you are the last routine of the morning ===
+
+- `data/inbox_triage.tsv` must end the week with nothing PENDING, whatever the
+  beat: resolve every row the earlier routines routed but did not close.
+- `data/source_inbox.json` must end the week with nothing PENDING, whatever
+  the beat.
+
+=== SEARCH ANGLES TO ROTATE ===
+
+- by people: PI names once known, "lab of X", recent-award announcement pages
+- by topic: [TODO — research lines, techniques, model systems]
+- by place: [TODO — target cities/countries]
+- by time: "abstract deadline 2026", "applications open", course calendars
+
+Each branch must report at least one source it had not used before, or state
+explicitly that it looked and found none.
+
+FOR EVERY ROW SCORING 4 OR 5, the Fit_Rationale must answer concretely:
+- groups: why this group for HER — line, technique, culture, funding runway —
+  and what the first approach should say
+- events: what she gets out of attending (visibility, named contacts, a
+  session that matches her work) against cost and clock
+- training: which profile gap it closes and whether funding covers it
