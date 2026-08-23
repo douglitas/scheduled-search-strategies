@@ -33,13 +33,10 @@ perfil, las rutinas se niegan a investigar (paran con ALERTA). Se pueden crear
 las routines antes de definir el perfil, pero no harán nada útil hasta este
 paso.
 
-## 1. Crear el repo en SU cuenta de GitHub
+## 1. El repo en GitHub — HECHO (2026-08-23)
 
-```bash
-cd ~/Projects/research-opportunities          # o donde se haya clonado
-git remote add origin https://github.com/<SU-USUARIO>/research-opportunities.git
-git push -u origin main
-```
+El repositorio vive en **https://github.com/douglitas/scheduled-search-strategies**
+y este árbol ya está empujado a `main`.
 
 - **El repo debe ser público** para que Pages sea pública en una cuenta
   gratuita (en repos privados, Pages exige plan de pago).
@@ -67,9 +64,8 @@ En `tools/build_page.py`, cerca del principio:
 - `MAILBOX = 'CONFIGURAR-buzon@gmail.com'` → el Gmail de ella (el que leen las
   rutinas). La pestaña Suscripciones lo enseña para recordar con qué buzón
   darse de alta en cada alerta.
-- (El nombre del repo no hay que tocarlo: en CI lo inyecta
-  `GITHUB_REPOSITORY`; el valor `OWNER/research-opportunities` sólo afecta a
-  vistas locales.)
+- (El nombre del repo ya apunta a `douglitas/scheduled-search-strategies`; en
+  CI lo inyecta `GITHUB_REPOSITORY` de todas formas.)
 
 ## 4. Gmail de ella
 
@@ -109,8 +105,8 @@ python3 -c "import json,os;print(json.load(open(os.path.expanduser('~/.claude.js
 
 Configuración de las tres (idéntica salvo nombre, cron y fichero de prompt):
 
-- **Fuente:** `github.com/<SU-USUARIO>/research-opportunities` (la GitHub App
-  de Claude pedirá acceso al repo la primera vez).
+- **Fuente:** `github.com/douglitas/scheduled-search-strategies` (la GitHub
+  App de Claude pedirá acceso al repo la primera vez).
 - **Modelo:** `claude-opus-5`. **Herramientas:** Bash, Read, Write, Edit,
   Glob, Grep, WebSearch, WebFetch, Task, TodoWrite.
 - **Entorno:** el de por defecto de su cuenta, con **Network access = Full**
@@ -132,7 +128,7 @@ horas se conserva, que es lo que importa.
 vive en el repo (editar `prompts/` cambia la rutina sin tocar el disparador):
 
 > Eres la rutina semanal «research — positions». El repositorio
-> `<SU-USUARIO>/research-opportunities` ya está clonado en tu directorio de
+> `douglitas/scheduled-search-strategies` ya está clonado en tu directorio de
 > trabajo. Lee el fichero `prompts/out/positions.md` y síguelo al pie de la
 > letra: ese fichero es la única fuente de instrucciones y, si contradice
 > cualquier cosa de este disparador, gana el fichero. No pidas confirmación de
@@ -150,7 +146,8 @@ Para que ella pueda marcar `leído / en curso / descartado…` desde la página:
 
 1. En **su** GitHub: Settings → Developer settings → **Fine-grained tokens** →
    Generate new token.
-2. Resource owner: ella; Repository access: **sólo** `research-opportunities`;
+2. Resource owner: ella; Repository access: **sólo**
+   `scheduled-search-strategies`;
    Permissions: **Contents: Read and write**. Nada más. Caducidad: la máxima
    que ofrezca — y apuntad la fecha: el día que caduque, los botones dejarán
    de guardar y habrá que generar otro y volver a pegarlo.

@@ -51,8 +51,9 @@ summary, and never stop to ask a question.
 
 === THE DATABASE: GIT IS THE STATE, AND GIT IS THE HISTORY ===
 
-Everything lives in this GitHub repository (research-opportunities). There is
-no Google Drive, no dated filenames and no handoff document.
+Everything lives in this GitHub repository
+(**douglitas/scheduled-search-strategies**). There is no Google Drive, no
+dated filenames and no handoff document.
 
     data/           the canonical state, one TSV per tab, NO dates in the names
     docs/           the generated web page — NEVER edit by hand, CI builds it
@@ -71,9 +72,9 @@ HOW TO WORK, EVERY RUN, IN THIS ORDER:
 
        git remote -v && git status
 
-   If the checkout is missing or the remote is not the research-opportunities
-   repository, STOP: do no research, write nothing, and end the run with one
-   ALERTA line in the session summary.
+   If the checkout is missing or the remote is not
+   douglitas/scheduled-search-strategies, STOP: do no research, write nothing,
+   and end the run with one ALERTA line in the session summary.
 
    THEN CHECK THE PROFILE. If the candidate block above still contains the
    marker PROFILE-INCOMPLETE or any "[TODO", STOP after the inbox pass (if you

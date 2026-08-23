@@ -6,7 +6,8 @@ tesis. Tres Claude Code Routines investigan cada lunes, empujan TSVs a este
 repo y el CI regenera la página de GitHub Pages (pública) y el Excel.
 
 Clonado del tracker de funding de PitAssist el 2026-08-23, con sus lecciones
-ya incorporadas en prompts y herramientas.
+ya incorporadas en prompts y herramientas. Remoto:
+https://github.com/douglitas/scheduled-search-strategies
 
 ## Reglas para cualquier sesión en este repo
 

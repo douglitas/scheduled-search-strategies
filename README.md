@@ -140,8 +140,8 @@ en la base de datos con su motivo.
 ## 6. Empezar de cero en otra sesión
 
 ```bash
-git clone <url-del-repo>   # ver SETUP.md §2
-cd research-opportunities
+git clone https://github.com/douglitas/scheduled-search-strategies.git
+cd scheduled-search-strategies
 pip install openpyxl
 python3 tools/build_page.py && python3 tools/build_xlsx.py
 open docs/index.html
