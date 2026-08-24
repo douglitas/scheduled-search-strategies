@@ -1,2 +1,12 @@
 Rank	ID	Name	Tab	Type	Deadline	Days_Left	Amount_EUR	Fit_1_5	Effort_Estimate	Next_Action	URL
 1	F-0019	FENS/IBRO-PERC Exchange Fellowships	Fellowships	SHORT_STAY	2026-10-15	53	hasta 4000	4	S	Antes del 15-10-2026: confirmar u obtener la membresia de SENC o la individual de FENS, escribir a 2 o 3 PI candidatos para la carta de aceptacion, y decidir si la estancia es una rotacion externa de la residencia (necesita visto bueno del tutor, conviene empezar esa conversacion ya) o una estancia posterior al 22-05-2027 solicitada en la ronda del 15 de abril de 2027.	https://www.fens.org/careers/grants-and-stipends/grant/fens-ibro-perc-exchange-fellowships
+2	E-0002	ASHG 2026 Annual Meeting	Events	Congreso anual	2026-08-26	2	400	5	M		https://ashgmeeting.ashg.org/
+3	E-0001	World Congress of Psychiatric Genetics (WCPG) 2026	Events	Congreso anual	2026-09-29	36		5	M		https://ispg.net/wcpg-2026/
+4	E-0005	IGES 2026 Annual Meeting & Education Workshop	Events	Congreso anual + workshop		55		4	M		https://www.geneticepi.org/2026-annual-meeting
+5	T-0002	Genetic Epidemiology (short course)	Training	Short course	2027-01-13	142	1470	4	XS		http://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/genetic-epidemiology/
+6	T-0001	International Statistical Genetics Workshop (el 'Boulder Workshop')	Training	Workshop		189		5	S		https://www.colorado.edu/ibg/workshop-2027
+7	T-0003	Mendelian Randomization (short course)	Training	Short course	2027-03-01	189	1035	4	XS		http://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/mr/
+8	L-0001	Complex Trait Genetics (CTG) Lab	Groups					5	S		https://cncr.nl/ctg/
+9	L-0002	Psychiatric Genetics Group	Groups					5	S		https://www.qimrb.edu.au/researchers-and-labs/psychiatric-genetics
+10	L-0004	Generation R - genetica del sueno infantil	Groups					5	S		https://acamh.onlinelibrary.wiley.com/doi/10.1111/jcpp.13899
+11	L-0006	SGDP Centre / Statistical Genetics Unit	Groups					5	S		https://www.kcl.ac.uk/research/sgu
