@@ -93,7 +93,16 @@ def main():
                 fit = int(float(r.get("Fit_1_5") or 0))
             except ValueError:
                 continue
-            dl = first_date(r.get("Deadline") or r.get("Start_Date"))
+            # Start_Date solo vale como sucedaneo de plazo cuando la fila SI
+            # tiene un plazo real que vence. En una plaza ROLLING no lo es: la
+            # fecha de incorporacion no cierra nada, y tratarla como plazo
+            # colaba en action_now puestos para los que ella ni siquiera es
+            # elegible (P-0002, que exige el doctorado ya defendido) con una
+            # urgencia inventada. Los relojes mandan sobre la regla mecanica.
+            rolling = (r.get("Status") or "").strip().upper() == "ROLLING"
+            dl = first_date(r.get("Deadline")
+                            if rolling else
+                            (r.get("Deadline") or r.get("Start_Date")))
             comp = (r.get("Competition_Level") or "").strip().upper()
 
             keep = False
