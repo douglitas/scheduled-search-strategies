@@ -17,6 +17,25 @@ import apply_rows as ar
 
 MAX_SUBS = 2
 
+# Pestañas propias de cada rutina: (fichero, prefijo de ID, clave en el JSON
+# de rama). Una rama entrega "new_<clave>" y "updates_<clave>". La ownership
+# es disjunta: apply_run jamas escribe una pestaña de otra rutina.
+OWNED = {
+    "fellowships": [
+        ("fellowships", "F", "fellowships"),
+        ("watchlist_closed", "W", "watchlist"),
+    ],
+    "positions": [
+        ("postdocs", "P", "postdocs"),
+        ("jobs", "J", "jobs"),
+    ],
+    "ecosystem": [
+        ("groups", "L", "groups"),
+        ("events", "E", "events"),
+        ("training", "T", "training"),
+    ],
+}
+
 
 def clean(value):
     """Un TSV no soporta tabuladores ni saltos de linea dentro de un valor."""
@@ -41,16 +60,16 @@ def main():
 
     changelog = []
 
-    # --- fellowships y watchlist_closed: pestañas propias -------------------
-    for tab, prefix in (("fellowships", "F"), ("watchlist_closed", "W")):
+    # --- pestañas propias de la rutina -------------------------------------
+    if routine not in OWNED:
+        sys.exit("rutina desconocida: %s (esperaba %s)"
+                 % (routine, sorted(OWNED)))
+    for tab, prefix, key in OWNED[routine]:
         new_rows, updates = [], {}
         for _, p in payloads:
-            for r in p.get("new_" + ("fellowships" if tab == "fellowships"
-                                     else "watchlist"), []) or []:
+            for r in p.get("new_" + key, []) or []:
                 new_rows.append(clean_row(r))
-            for rid, changes in (p.get("updates_" + ("fellowships"
-                                                     if tab == "fellowships"
-                                                     else "watchlist")) or {}).items():
+            for rid, changes in (p.get("updates_" + key) or {}).items():
                 updates.setdefault(rid, {}).update(clean_row(changes))
         if not new_rows and not updates:
             print("%-18s sin cambios" % tab)
