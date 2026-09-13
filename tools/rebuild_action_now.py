@@ -48,6 +48,7 @@ BEATS = {
 }
 EXCLUDE = {"DISCARDED", "APPLIED", "RESOLVED"}
 DATE = re.compile(r"(20\d\d)-(\d\d)-(\d\d)")
+ROLLING_TEXT = re.compile(r"a partir|sin fecha de cierre|revision continua|rodante", re.I)
 
 
 def first_date(text):
@@ -100,9 +101,17 @@ def main():
             # elegible (P-0002, que exige el doctorado ya defendido) con una
             # urgencia inventada. Los relojes mandan sobre la regla mecanica.
             rolling = (r.get("Status") or "").strip().upper() == "ROLLING"
-            dl = first_date(r.get("Deadline")
+            deadline_text = r.get("Deadline") or ""
+            # Segunda mitad de la misma leccion: en una plaza ROLLING, una
+            # fecha escrita en Deadline tampoco cierra nada cuando el propio
+            # texto dice que es de APERTURA ("revision continua a partir
+            # del..."). Leerla como plazo volvio a colar P-0002 en action_now
+            # el 2026-09-14, que es justo lo que el contrato prohibe.
+            if rolling and ROLLING_TEXT.search(deadline_text):
+                deadline_text = ""
+            dl = first_date(deadline_text
                             if rolling else
-                            (r.get("Deadline") or r.get("Start_Date")))
+                            (deadline_text or r.get("Start_Date")))
             comp = (r.get("Competition_Level") or "").strip().upper()
 
             keep = False
