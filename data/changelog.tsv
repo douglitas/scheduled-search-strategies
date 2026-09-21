@@ -329,3 +329,63 @@ Run_Date	Routine	Tab	ID	Name	Change_Type	Details	URL
 2026-09-21	fellowships	watchlist_closed	W-0020	Contratos postdoctorales de la Junta de Andalucia (Linea 2, EIDIA) - edicion 2027	UPDATED	columnas: Last_Checked, Notes	https://www.juntadeandalucia.es/boja/
 2026-09-21	fellowships	watchlist_closed	W-0021	Ayudas a Proyectos de la Fundacion Alicia Koplowitz - convocatoria 2027	UPDATED	columnas: Last_Checked, Notes	https://fundacionaliciakoplowitz.org/lineas-de-accion/ayudas-investigacion/
 2026-09-21	fellowships	watchlist_closed	W-0022	III Convocatoria de Becas Fulbright-Fundacion Seneca de investigacion posdoctoral en EE. UU.	UPDATED	columnas: Expected_Reopen, Last_Checked, Notes, Reopen_Confidence	https://fseneca.es/web/convocatorias
+2026-09-21	ecosystem	events	E-0001	World Congress of Psychiatric Genetics (WCPG) 2026	UPDATED	revision semanal de la rama eventos	https://ispg.net/wcpg-2026/
+2026-09-21	ecosystem	events	E-0002	ASHG 2026 Annual Meeting	UPDATED	revision semanal de la rama eventos	https://ashgmeeting.ashg.org/
+2026-09-21	ecosystem	events	E-0003	ESHG Conference 2027 (European Human Genetics Conference)	UPDATED	revision semanal de la rama eventos	https://2027.eshg.org/abstracts/
+2026-09-21	ecosystem	events	E-0004	Behavior Genetics Association (BGA) 2027 Annual Meeting	UPDATED	revision semanal de la rama eventos	https://bga.org/
+2026-09-21	ecosystem	events	E-0005	IGES 2026 Annual Meeting & Education Workshop	UPDATED	revision semanal de la rama eventos	https://www.geneticepi.org/2026-annual-meeting
+2026-09-21	ecosystem	events	E-0006	SOBP 2027 Annual Meeting	UPDATED	revision semanal de la rama eventos	https://sobp.org/
+2026-09-21	ecosystem	events	E-0007	Sleep Europe 2026 (28th ESRS Congress)	UPDATED	revision semanal de la rama eventos	https://congrex.com/events/sleep-europe-2026-the-28th-congress-of-the-european-sleep-research-society/
+2026-09-21	ecosystem	events	E-0008	SLEEP 2027 (APSS Annual Meeting)	UPDATED	revision semanal de la rama eventos	https://aasm.org/event/sleep-2027/
+2026-09-21	ecosystem	events	E-0017	GAW 2027 - Genetic Analysis Workshop (convocatoria de ideas abierta)	UPDATED	revision semanal de la rama eventos	https://www.geneticepi.org/
+2026-09-21	ecosystem	events	E-0019	EPA 2027 - 35th European Congress of Psychiatry	NEW	alta de la rama eventos	https://epa-congress.org/abstract-submission/
+2026-09-21	ecosystem	events	E-0020	Probabilistic Modeling in Genomics 2027 (ProbGen 2027)	NEW	alta de la rama eventos	https://meetings.cshl.edu/meetings.aspx?meet=PRGEN
+2026-09-21	ecosystem	events	E-0021	Epigenomics of Common Diseases 2026	NEW	alta de la rama eventos	https://coursesandconferences.wellcomeconnectingscience.org/event/epigenomics-of-common-diseases-20261104/
+2026-09-21	ecosystem	training	T-0001	International Statistical Genetics Workshop (el 'Boulder Workshop')	UPDATED	revision semanal de la rama formacion	https://www.colorado.edu/ibg/workshop-2027
+2026-09-21	ecosystem	training	T-0002	Genetic Epidemiology (short course)	UPDATED	revision semanal de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/genetic-epidemiology/
+2026-09-21	ecosystem	training	T-0003	Mendelian Randomization (short course)	UPDATED	revision semanal de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/mr/
+2026-09-21	ecosystem	training	T-0004	Genetic Analysis of Population-based Association Studies	UPDATED	revision semanal de la rama formacion	https://coursesandconferences.wellcomeconnectingscience.org/event/genetic-analysis-of-population-based-association-studies-20240902/
+2026-09-21	ecosystem	training	T-0007	Advanced Mendelian Randomization	UPDATED	revision semanal de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/advanced-mr/
+2026-09-21	ecosystem	training	T-0008	Machine Learning with Omics Data	UPDATED	revision semanal de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/
+2026-09-21	ecosystem	training	T-0009	Molecular Epidemiology	UPDATED	revision semanal de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/molecular-epidemiology/
+2026-09-21	ecosystem	training	T-0011	Genetic and Epigenetic Epidemiology (curso especializado del EEPE)	UPDATED	revision semanal de la rama formacion	https://www.eepe.org/registration-2-2/
+2026-09-21	ecosystem	training	T-0012	SMARTbiomed Summer School: Causal inference, statistical genetics and machine learning in common disease epidemiology and biology	UPDATED	revision semanal de la rama formacion	https://smartbiomed.dk/news-and-events/summer-school
+2026-09-21	ecosystem	training	T-0014	SSGAC/CESR Social-Science Genetics Methods Workshop	NEW	alta de la rama formacion	https://www.thessgac.org/events
+2026-09-21	ecosystem	training	T-0015	Reproducible Health Data Science	NEW	alta de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/
+2026-09-21	ecosystem	training	T-0016	Causal Inference in Epidemiology: Concepts and Methods	NEW	alta de la rama formacion	https://www.bristol.ac.uk/medical-school/short-courses-and-cpd/short-courses/courses/
+2026-09-21	ecosystem	training	T-0017	Federated analysis for polygenic risk score calculations	NEW	alta de la rama formacion	https://www.ebi.ac.uk/training/events/federated-analysis-polygenic-risk-score-calculations/
+2026-09-21	ecosystem	groups	L-0011	Population Genetics of Human Communication (PGHC) - Departamento de Language & Genetics, Max Planck	UPDATED	seguimiento semanal de la rama grupos	https://www.mpi.nl/career-education/vacancies/vacancy/3-year-postdoctoral-research-scientist-position-statistical-0
+2026-09-21	ecosystem	groups	L-0005	MRC Centre for Neuropsychiatric Genetics & Genomics	UPDATED	seguimiento semanal de la rama grupos	https://cardiffuniweb.eploy.net/vacancies/
+2026-09-21	ecosystem	groups	L-0008	Saxena Lab (genomica del sueno y circadiana)	UPDATED	seguimiento semanal de la rama grupos	https://saxena.mgh.harvard.edu/our-lab/jobs-in-the-lab/
+2026-09-21	ecosystem	groups	L-0012	Grupo de genetica estadistica psiquiatrica de Wouter Peyrot (proyecto ERC PersonalRiskProfile)	UPDATED	seguimiento semanal de la rama grupos	https://werkenbij.amsterdamumc.org/en/vacancies/all-vacancies
+2026-09-21	ecosystem	groups	L-0013	Grupo de Kelli Lehto, Instituto de Genomica (proyecto ERC AT-TENSION)	UPDATED	seguimiento semanal de la rama grupos	https://genomics.ut.ee/en/research-group-neuropsychiatric-genomics
+2026-09-21	ecosystem	groups	L-0001	Complex Trait Genetics (CTG) Lab	UPDATED	seguimiento semanal de la rama grupos	https://cncr.nl/ctg/jobs/
+2026-09-21	ecosystem	groups	L-0024	Department of Genetic Epidemiology in Psychiatry (grupo de Fabian Streit)	UPDATED	seguimiento semanal de la rama grupos	https://www.zi-mannheim.de/en/research/people/person/2092.html
+2026-09-21	ecosystem	groups	L-0004	Generation R - genetica del sueno infantil	UPDATED	seguimiento semanal de la rama grupos	https://hsph.harvard.edu/profile/henning-tiemeier/
+2026-09-21	ecosystem	groups	L-0026	Yao Lab / proyecto CANARY, Department of Medical Epidemiology and Biostatistics	NEW	alta de la rama de descubrimiento de grupos	https://news.ki.se/five-ki-researchers-receive-erc-starting-grants-in-2026
+2026-09-21	ecosystem	groups	L-0027	Huang Lab, Analytic and Translational Genetics Unit (ATGU)	NEW	alta de la rama de descubrimiento de grupos	https://huanglab.ac/home-page/
+2026-09-21	ecosystem	groups	L-0028	Psychiatric Genetics group / PGC Anxiety Disorders working group	NEW	alta de la rama de descubrimiento de grupos	https://www.ukw.de/aktuelle-meldungen/detail/news/angst-im-genom-neue-genetische-zusammenhaenge-mit-angstsymptomen/
+2026-09-21	ecosystem	groups	L-0029	Robinson Lab, Center for Genomic Medicine and Dept. of Psychiatry	NEW	alta de la rama de descubrimiento de grupos	https://www.robinsonlab.org/
+2026-09-21	ecosystem	groups	L-0030	Mattheisen group, Dept. of Community Health and Epidemiology (y Faculty of Computer Science)	NEW	alta de la rama de descubrimiento de grupos	https://medicine.dal.ca/departments/department-sites/community-health/our-people/our-faculty/ManuelMattheisen.html
+2026-09-21	ecosystem	groups	L-0031	Laboratory of Neurogenomic Biomarkers, Institute of Behavioral Science	NEW	alta de la rama de descubrimiento de grupos	https://feinstein.northwell.edu/institutes-researchers/our-researchers/todd-lencz-phd
+2026-09-21	ecosystem	groups	L-0032	Institute of Medical Biometry and Statistics, grupo de genetica estadistica	NEW	alta de la rama de descubrimiento de grupos	https://www.geneticepi.org/board-of-directors
+2026-09-21	ecosystem	sources	SRC-0169		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0170		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0171		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0172		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0173		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0174		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0175		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0176		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0177		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0178		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0179		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0180		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0181		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0182		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0183		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0184		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0185		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0186		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	sources	SRC-0187		NEW	alta de superficie de monitorizacion	
+2026-09-21	ecosystem	subscriptions	SUB-0019		NEW	candidata de suscripcion, Status TODO	
