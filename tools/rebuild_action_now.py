@@ -48,7 +48,19 @@ BEATS = {
 }
 EXCLUDE = {"DISCARDED", "APPLIED", "RESOLVED"}
 DATE = re.compile(r"(20\d\d)-(\d\d)-(\d\d)")
-ROLLING_TEXT = re.compile(r"a partir|sin fecha de cierre|revision continua|rodante", re.I)
+#
+# Tercera mitad de la misma leccion (2026-10-05): en una fila ROLLING, el texto
+# de Deadline tambien puede NEGAR el plazo en vez de declararlo rodante — p. ej.
+# "la ficha Tier 1 NO publica fecha de cierre; el 2026-10-08 de la ISPG sigue
+# SIN confirmar". La lista anterior solo reconocia la forma afirmativa ("sin
+# fecha de cierre"), asi que la fecha citada para decir que NO esta confirmada
+# se leia como plazo y colaba P-0002 en action_now por tercera vez. Lo que
+# importa no es la frase exacta sino que una fecha DESMENTIDA no es un plazo.
+ROLLING_TEXT = re.compile(
+    r"a partir|sin fecha de cierre|revision continua|rodante"
+    r"|no publica|no publicado|no consta|no hay plazo|no se publica"
+    r"|sin confirmar|sin fecha|hasta cubrir|open until filled|until filled",
+    re.I)
 
 
 def first_date(text):
