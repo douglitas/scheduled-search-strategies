@@ -290,3 +290,40 @@ teníamos); las cinco páginas restantes de Broad (`jobOffset=6..30`); barrer
 Cambridge / MRC Epidemiology Unit, que recluta en tu línea y no está en la
 lista de objetivos de ninguna rama; y el carril de industria y MedComms, que
 esta semana se quedó entero sin tocar por el peso del carril español.
+
+---
+
+## CORRECCIÓN, añadida el 2026-10-07
+
+**Lo que este informe decía sobre la «errata» U.108/U.78 es falso, y la
+alegación que recomendaba no debe presentarse.** La dueña lo señaló con el
+argumento correcto: si la genética clínica la vienen haciendo los servicios de
+laboratorio, computar U.78 no es un error, es la realidad.
+
+Comprobado leyendo el PDF de Genética Médica completo: su disposición final
+primera dice literalmente **«se crea la unidad asistencial "U.108"»**, y la
+parte expositiva habla de «la creación de la unidad asistencial U.108 Genética
+Médica, **diferenciada de la U.78**». La U.108 no existe hasta este real
+decreto, así que nadie puede acreditar experiencia en ella y computar U.78 es
+la única lectura posible. No había tal arrastre del borrador gemelo.
+
+**Y la corrección amplía la oportunidad en vez de reducirla.** Siendo médica
+con título de especialista, cumple el requisito subjetivo de los DOS decretos:
+el apartado 3 del de Genética Médica pide «título de Médico Especialista en
+Ciencias de la Salud» y su apartado 4, «estar realizando una formación médica
+especializada». El ejercicio computable se acredita en U.78 en ambos.
+
+**Diferencia que ahora sí decide el destino de mayo de 2027:** para Genética de
+Laboratorio vale la U.78 en cinco tipos de centro (hospital general,
+especializado, reproducción asistida, diagnóstico, transfusión); para Genética
+Médica **sólo en C.1.1 y C.1.2, es decir en hospital**. Una U.78 hospitalaria
+acumula para los dos títulos; una U.78 en un centro de diagnóstico, sólo para
+el de Laboratorio.
+
+Alegaciones que sí sobreviven, antes del 26-10-2026: (i) el apartado 10.c, que
+hace esperar a los residentes del apartado 4 hasta que acabe la primera
+promoción con una ventana de 15 días naturales, frente al mes que tienen los
+especialistas del apartado 3; y (ii) pedir que se aclare si cabe acceder por
+vía extraordinaria a los dos títulos, que ningún precepto aborda.
+
+Fila `J-0003` corregida en consecuencia.
