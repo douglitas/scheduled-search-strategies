@@ -63,6 +63,27 @@ ROLLING_TEXT = re.compile(
     re.I)
 
 
+# Cuarta leccion de la misma familia (2026-10-26, pasada fellowships): el
+# contrato dice, literalmente, que una convocatoria para la que ella NO es
+# elegible «scores what it scores, but its row must SAY she is ineligible and
+# why, and it goes nowhere near action_now». El selector solo sabia de Fit,
+# plazo y competencia, asi que F-0008 (EMBO, Fit 4, cierre 2027-01-22) entro en
+# la lista corta pese a que su propia fila dice INELIGIBLE: le falta el
+# articulo de primera autora aceptado, y EMBO ademas prohibe reaplicar desde la
+# ronda siguiente, o sea que presentarse siendo inelegible quema un unico
+# intento vitalicio. Recomendar eso en la cabecera de la pagina es peor que no
+# recomendar nada.
+#
+# El guardarrail es deliberadamente literal: solo excluye cuando la fila AFIRMA
+# la inelegibilidad con una de estas formas. No interpreta relojes ni fechas
+# —eso es trabajo de la rutina al puntuar, no del generador— y su unico modo de
+# fallo es dejar fuera de una lista corta una fila que sigue entera y visible
+# en su pestana.
+INELIGIBLE_TEXT = re.compile(
+    r"\b(?:INELIGIBLE|INELEGIBLE|NOT ELIGIBLE|NO ES ELEGIBLE|NO ELEGIBLE)\b",
+    re.I)
+
+
 def first_date(text):
     m = DATE.search(text or "")
     if not m:
@@ -96,6 +117,10 @@ def main():
             if (r.get("Status") or "").strip().upper() == "CLOSED":
                 continue
             if (r.get("Change_Flag") or "").strip().upper() == "CLOSED":
+                continue
+            # una fila que se declara inelegible no sube a la lista corta
+            if INELIGIBLE_TEXT.search((r.get("Fit_Rationale") or "") + " "
+                                      + (r.get("Eligibility_Key_Conditions") or "")):
                 continue
             # un evento o curso ya empezado no puede seguir en action_now
             # aunque su Fit sea 5 y no tenga plazo de inscripcion
