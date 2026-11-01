@@ -6,7 +6,7 @@ MIENTE.** `euraxess.ec.europa.eu/jobs/search` ya **no** devuelve 403: devuelve
 cuyo único texto propio es `Sorry - 498793241`, con cero enlaces `/jobs/<id>`,
 cero títulos y ningún endpoint de API. Los espejos nacionales siguen cortados
 (`euraxess.es` 403, `.de` y `.se` 429). **Consecuencia operativa, y es la
-trampa más caraa de la semana: comprobar EURAXESS por código de estado ya no
+trampa más cara de la semana: comprobar EURAXESS por código de estado ya no
 vale, hay que leer el cuerpo.** Quien lo mire la semana que viene y vea un 200
 va a creer que el bloqueo cayó. No cayó. La superficie EU sigue sin cobertura
 automática y **SUB-0002 y SUB-0018 (alertas por correo de EURAXESS) siguen
