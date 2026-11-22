@@ -1717,3 +1717,11 @@ Run_Date	Routine	Tab	ID	Name	Change_Type	Details	URL
 2026-11-22	positions	jobs	J-0018	Concurso-oposicion 2026 de Facultativo Especialista de Area en Laboratorio Clinico del Servicio Navarro de Salud-Osasunbidea (Resolucion 1515E/2026, 3 plazas nivel A)	UPDATED	columnas: Change_Flag, Last_Updated, Next_Action, Source_Note	https://www.navarra.es/es/tramites/on/-/line/facultativo-especialista-de-area-en-laboratorio-clinico-concurso-oposicion-2026
 2026-11-22	positions	jobs	J-0032	Senior Statistical Geneticist and genetics-team vacancies at Our Future Health	UPDATED	columnas: Change_Flag, Last_Updated, Next_Action, Source_Note	https://apply.workable.com/our-future-health/
 2026-11-22	positions	jobs	J-0037	Senior Clinical Genomics / Genome Analysis Specialist	UPDATED	columnas: Change_Flag, Last_Updated, Last_Verified, Source_Note	https://www.eshg.org/collaborations/jobs-training-collaborations-grants/job-opportunities?tx_jobfair_pi1[job]=166
+2026-11-22	positions	postdocs	P-0043		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0082		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0093		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0094		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0095		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0096		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0111		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
+2026-11-22	positions	postdocs	P-0112		UPDATED	columnas: Competition_Basis, Competition_Level (normalizacion del enum)	
